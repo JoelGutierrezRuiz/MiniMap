@@ -1,38 +1,281 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <title>Title</title>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<head>
+  <title>Title</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 
-        <!-- Incluye el CSS de Leaflet -->
-    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-    <!-- Incluye el JavaScript de Leaflet -->
-    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-    <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
 
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-  </head>
-
-  <body>
+  <!-- Incluye el CSS de Leaflet -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <!-- Incluye el JavaScript de Leaflet -->
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/signIn.css">
+  <link rel="stylesheet" href="css/navbar.css">
+  <link rel="stylesheet" href="css/dashboard.css">
 
 
 
-    <h1 id="country_name">Country</h1>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" href="#">Navbar</a>
+  
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="#">Disabled</a>
+        </li>
+      </ul>
+      <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </form>
+    </div>
+  </nav>
+
+
+  <main id="main">
+
 
 
     <div id="map" style="height: 500px;"></div>
 
+    <section id="country_info">
+      <div class="countryFlag">
+        <h1 id="country_name">MiniMap</h1>
+        <img id="flag" src="https://static.vecteezy.com/system/resources/thumbnails/035/700/437/small/3d-cartoon-planet-earth-png.png">
+      </div>
+
+      <div class="weather">
+        <h2>Tiempo</h2>
+        <img id="weatherImg" src="#">
+        <b id="degrees">22º</b>
+      </div>
       
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <script type="module" src="map.js"></script>
+
+      <div class="capital">
+        <h2>Capital</h2>
+        <span class="material-symbols-outlined">
+          things_to_do
+          </span>
+        <h3 id="capital">Minesotta</h3>
+      </div>
+
+      <div class="population">
+        <h3>Population</h3>
+        <span class="material-symbols-outlined">
+          groups
+        </span>
+        <b id="population">0</b>
+
+      </div>
+
+
+    </section>
+
+  </main>
+
+
+
+  <main id="sign-in" class="d-none w-100">
+
+		<div class="container d-flex flex-column">
+			<div class="row vh-100">
+				<div class="col-sm-10 col-md-8 col-lg-6 col-xl-5 mx-auto d-table h-100">
+					<div class="d-table-cell align-middle">
+
+						<div class="text-center mt-4">
+							<h1 class="h2">Welcome back!</h1>
+							<p class="lead">
+								Sign in to your account to save your score
+							</p>
+						</div>
+
+						<div class="card">
+							<div class="card-body">
+								<div class="m-sm-3">
+									<form>
+
+										<div class="mb-3">
+											<label class="form-label">User name</label>
+											<input id="sign-in-input" class="form-control form-control-lg" type="text" name="name" placeholder="Enter your user name">
+										</div>
+
+
+										<div class="d-grid gap-2 mt-3">
+											<a class="btn btn-lg btn-primary" id="sign-in-button" >Sign in</a>
+										</div>
+
+
+									</form>
+								</div>
+							</div>
+						</div>
+						<div class="text-center mb-3">
+							Don't have an account? <a id="sign-in-sign-up">Sign up</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+
+
+  <main id="sign-up" class="d-none w-100">
+		<div class="container d-flex flex-column">
+			<div class="row vh-100">
+				<div class="col-sm-10 col-md-8 col-lg-6 col-xl-5 mx-auto d-table h-100">
+					<div class="d-table-cell align-middle">
+
+						<div class="text-center mt-4">
+							<h1 class="h2">Get started</h1>
+							<p class="lead">
+								Start creating the best possible user experience for you customers.
+							</p>
+						</div>
+
+						<div class="card">
+							<div class="card-body">
+								<div class="m-sm-3">
+									<form>
+										<div class="mb-3">
+											<label class="form-label">User name</label>
+											<input class="form-control form-control-lg" type="text" name="name" placeholder="Enter your name">
+										</div>
+
+										<div class="d-grid gap-2 mt-3">
+											<a class="btn btn-lg btn-primary" href="/">Sign up</a>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+						<div class="text-center mb-3">
+							Already have account? <a id="sign-up-sign-in">Log In</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+
+
+
+
+
+  <table>
+
+
+    <tr>
+
+      <td colspan="1">
+
+      </td>
+
+      
+      <td>
+        Nombre
+      </td>
+
+      <td>
+        Puntuación
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+      <td>
+        <img src="https://static.nationalgeographic.es/files/styles/image_3200/public/2773.600x450.jpg?w=400&h=400&q=75">
+      </td>
+      <td>
+        Joelo
+      </td>
+      <td>
+        25
+      </td>
+    </tr>
+
+
+    <tr>
+      <td>
+        <img src="https://static.nationalgeographic.es/files/styles/image_3200/public/2773.600x450.jpg?w=400&h=400&q=75">
+      </td>
+      <td>
+        Joelo
+      </td>
+      <td>
+        25
+      </td>
+    </tr>
+
+
+    <tr>
+      <td>
+        <img src="https://static.nationalgeographic.es/files/styles/image_3200/public/2773.600x450.jpg?w=400&h=400&q=75">
+      </td>
+      <td>
+        Joelo
+      </td>
+      <td>
+        25
+      </td>
+    </tr>
+
+
+
+
+
+  </table>
+
+
+
+  
+
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+
+
+
+  <script  src="js/signIn.js"></script> 
+  <script src="js/countries.js"></script>
+  <script type="module" src="js/map.js"></script>
+  <script src="js/learning.js"></script>
+  <script src="js/play.js"></script>
+
+
 </body>
+
 </html>

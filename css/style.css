@@ -1,0 +1,62 @@
+
+#main{
+    margin-top: 50px;
+    width: 100vw;
+    height: 500px;
+    display: none;/*Whe log in flex*/
+    justify-content: space-evenly;
+
+}
+
+#map{
+    border: 1px solid rgba(128, 128, 128, 0.192);
+    border-radius: 20px;
+    flex-grow: 0.9;
+    background-color: white;
+}
+
+#country_name{
+    text-align: center;
+    letter-spacing: 5px;
+}
+
+#flag{
+    width:100px;
+    height: 80px;
+    object-fit: contain;
+}
+
+#country_info{
+    border: 1px solid rgba(128, 128, 128, 0.192);
+    background-color: white;
+    border-radius: 20px;
+    padding: 0 10px;
+    min-width:350px;
+    display: flex;
+    flex-direction: column;
+
+    justify-content: space-evenly;
+}
+
+#country_info div{
+    display: flex;
+    align-items: center;
+}
+
+.countryFlag{
+    justify-content: center;
+
+}
+
+.population{
+    justify-content: space-around;
+}
+
+
+.capital{
+    justify-content: space-around;
+}
+
+.weather{
+    justify-content: space-around;
+}
