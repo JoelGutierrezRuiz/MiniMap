@@ -148,7 +148,6 @@ function playing(map,data){
       console.log("!!!",e.target)
 
       if("Spain"!=e.target.feature.properties.name){
-        geojson.resetStyle(lastCountry);
         lastCountry=e.target;
       
         e.target.setStyle({
@@ -165,6 +164,9 @@ function playing(map,data){
 
 
     function showBorder(e) {
+
+
+      console.log("----> estilo:",e.target.options.style.color=="red")
 
       if(e.target==lastCountry){
         return;
