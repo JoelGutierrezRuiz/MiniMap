@@ -154,10 +154,11 @@ function playing(map,data){
           weight: 3,
           color: 'red',  // Color de la frontera
           dashArray: '',
-          fillOpacity: 0.3  // Opacidad del relleno
+          fillOpacity: 1  // Opacidad del relleno
         });
       
       }
+
       // Cambiar estilo del país resaltado
       
     }
@@ -165,10 +166,8 @@ function playing(map,data){
 
     function showBorder(e) {
 
-
-      console.log("----> estilo:",e.target.options.style.color=="red")
-
-      if(e.target==lastCountry){
+      console.log(e.target.options)
+      if(e.target.options.color=="red"){
         return;
       }
 
@@ -181,7 +180,7 @@ function playing(map,data){
     }
 
     function noBorder(e){
-      if(e.target==lastCountry){
+      if(e.target.options.color=="red"){
         return;
       }
       geojson.resetStyle(e.target);
