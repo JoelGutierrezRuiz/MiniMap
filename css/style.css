@@ -3,7 +3,9 @@
     margin-top: 50px;
     width: 100vw;
     height: 500px;
-    display: none;/*Whe log in flex*/
+    position: absolute;
+    opacity: 0;
+    display: flex;
     justify-content: space-evenly;
 
 }

@@ -10,7 +10,9 @@ const singInSignUp = document.getElementById("sign-in-sign-up");
 
 //Sign up
 const signUpContainer = document.getElementById("sign-up");
-const singUpSignIn = document.getElementById("sign-up-sign-in")
+const signUpSignIn = document.getElementById("sign-up-sign-in")
+const signUpButton = document.getElementById("sign-up-button")
+const signUpInput = document.getElementById("sign-up-input");
 
 
 if(!localStorage.users){
@@ -18,35 +20,58 @@ if(!localStorage.users){
 }
 
 //showElement(signInContainer);
+ShowPlayContainer()
+
+
 
 
 
 let allUsers =   JSON.parse(localStorage.users);
 
-let user = {
-    "name":"joelo",
-    "photo":"https://images.ecestaticos.com/pqIAcGCEagnkjdIBVKVbC9i5FH4=/0x0:1920x1278/1200x900/filters:fill(white):format(jpg)/f.elconfidencial.com%2Foriginal%2Fe8e%2Fe27%2F2bf%2Fe8ee272bfd36f69679936351209d708c.jpg",
-    "europeBest":2,
-    "americaBest":4,
-    "asiBest":1,
-    "africaBest":5,
-    "allBest":12
-}
 
-signInButton.addEventListener("click",(e)=>{
+
+signInButton.addEventListener("click",()=>{
 
     let userName = signInInput.value;
 
     if(!userName) return;
 
-    if(signIn(userName)){
+    if(exist(userName)){
         hideElement(signInContainer);
-        playContainer.style.display="flex"
+        ShowPlayContainer();
+        return;
     }
-    else alert("Este usuario no existe")
+    
+    alert("Este usuario no existe")
 });
 
-function signIn(userName){
+
+signUpButton.addEventListener("click",()=>{
+
+    let userName = signUpInput.value;
+
+    if(exist(userName)){
+        alert("this user already exists");
+        return
+    }
+
+    let user = {
+        "name":userName,
+        "photo":"https://images.ecestaticos.com/pqIAcGCEagnkjdIBVKVbC9i5FH4=/0x0:1920x1278/1200x900/filters:fill(white):format(jpg)/f.elconfidencial.com%2Foriginal%2Fe8e%2Fe27%2F2bf%2Fe8ee272bfd36f69679936351209d708c.jpg",
+        "europeBest":0,
+        "americaBest":0,
+        "asiBest":0,
+        "africaBest":0,
+        "allBest":0
+    }
+    allUsers.push(user);
+    localStorage.users= JSON.stringify(allUsers);
+    hideElement(signUpContainer)
+    ShowPlayContainer()
+
+})
+
+function exist(userName){
     
     if(allUsers.length==0)return;
 
@@ -59,13 +84,12 @@ function signIn(userName){
     return found;
 }
 
-
 singInSignUp.addEventListener("click",()=>{
     hideElement(signInContainer);
     showElement(signUpContainer);
 })
 
-singUpSignIn.addEventListener("click",()=>{
+signUpSignIn.addEventListener("click",()=>{
     hideElement(signUpContainer);
     showElement(signInContainer);
 })
@@ -79,4 +103,12 @@ function hideElement(element){
 function showElement(element){
     element.classList.remove("d-none");
     element.classList.add("d-flex");
+}
+
+
+function ShowPlayContainer(){
+
+    playContainer.style.display = "relative";
+    playContainer.style.opacity = "1";
+
 }

@@ -2,7 +2,7 @@ const apiKey = "278e107c7b7be0a3e2bb291233e4bcfd";
 const askingFor = getRandomElement(europe_codes);
 const flag = document.getElementById("flag")
 
-
+let playingMode = "learning"
 
 //Learning mode
 const countryName = document.getElementById("country_name");
@@ -29,18 +29,39 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   ).setView([initCoord.lat, initCoord.lng],5); 
 
-
   createOneMarker(initCoord,map);
   displayCoordInfo(initCoord);
  
-  let lastCountry;
 
   // Inicializa el mapa y centra la vista
+
   fetch('https://raw.githubusercontent.com/johan/world.geo.json/master/countries.geo.json')
   .then(response => response.json())
-  .then(data => {
-    // Mapa base
+  .then( (data)=> playing(map,data));
 
+
+
+  
+
+  map.on("click",(e) => {
+    let coord = e.latlng;
+    displayCoordInfo(coord)
+    .then(()=>{
+      map.setView([coord.lat,coord.lng],3)
+      createOneMarker(coord,map);
+    });
+  });
+});
+
+
+
+
+
+
+function learning(map,data){
+  let lastCountry;
+  
+    // Mapa base
     // Capa base de OpenStreetMap
     L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}.png', {
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="https://carto.com/attributions">CartoDB</a>',
@@ -104,19 +125,100 @@ document.addEventListener("DOMContentLoaded", function () {
       },
       onEachFeature: onEachFeature
     }).addTo(map);
-  });
-
+  
   
 
-  map.on("click",(e) => {
-    let coord = e.latlng;
-    displayCoordInfo(coord)
-    .then(()=>{
-      map.setView([coord.lat,coord.lng],3)
-      createOneMarker(coord,map);
-    });
-  });
-});
+}
+
+
+
+function playing(map,data){
+  let lastCountry;
+  
+    // Mapa base
+    // Capa base de OpenStreetMap
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="https://carto.com/attributions">CartoDB</a>',
+      detectRetina: true
+    }).addTo(map);
+
+    // Función para resaltar el país específico
+    function highlightFeature(e) {
+
+      console.log("!!!",e.target)
+
+      if("Spain"!=e.target.feature.properties.name){
+        geojson.resetStyle(lastCountry);
+        lastCountry=e.target;
+      
+        e.target.setStyle({
+          weight: 3,
+          color: 'red',  // Color de la frontera
+          dashArray: '',
+          fillOpacity: 0.3  // Opacidad del relleno
+        });
+      
+      }
+      // Cambiar estilo del país resaltado
+      
+    }
+
+
+    function showBorder(e) {
+
+      if(e.target==lastCountry){
+        return;
+      }
+
+      e.target.setStyle({
+        weight: 3,
+        color: 'orange',  // Color de la frontera
+        dashArray: '',
+        fillOpacity: 0.3  // Opacidad del relleno
+      });
+    }
+
+    function noBorder(e){
+      if(e.target==lastCountry){
+        return;
+      }
+      geojson.resetStyle(e.target);
+    }
+
+    // Función para aplicar eventos de interacción (hover, click, etc.)
+    function onEachFeature(feature, layer) {
+      layer.on({
+        "click": highlightFeature,
+        "mouseover":showBorder,
+        "mouseout":noBorder
+      });
+    }
+    // Cargar los países en el mapa
+    var geojson = L.geoJSON(data, {
+      style: function (feature) {
+        return {
+          fillColor:"white",
+          color: 'gray',  // Color de la frontera
+          weight: 1,      // Grosor de la frontera
+          opacity: 0.5    // Opacidad de la frontera
+        };
+      },
+      onEachFeature: onEachFeature
+    }).addTo(map);
+  
+  
+
+}
+
+
+
+
+
+
+
+
+
+
 
 
 async function displayCoordInfo(coord){
@@ -137,7 +239,6 @@ async function displayCoordInfo(coord){
   }
 
 }
-
 
 //This function creates a marker and deletes the last marker
 function createOneMarker(coord,map){
