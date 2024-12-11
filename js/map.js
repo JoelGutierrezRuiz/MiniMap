@@ -11,7 +11,86 @@ const capital = document.getElementById("capital");
 const weatherImg = document.getElementById("weatherImg");
 const degrees= document.getElementById("degrees");
 
+
+//Playing mode
+
+
+const toGuessImg = document.getElementById("to-guess-img");
+const toGuessName = document.getElementById("to-guess-name");
+
+
+
+
+
 let lastMarker;
+
+
+class Game{
+
+
+  #toGuess;
+  #countries;
+  #countriesAppeared;
+
+  constructor(countriesMode){
+    switch(countriesMode){
+      case "europe":
+        this.#countries = europe_codes;
+        break;
+      case "america":
+        this.#countries = america_codes;
+        break;
+    }
+
+    this.#countriesAppeared = [];
+    this.nextGuess();
+
+
+  }
+
+  nextGuess(){
+
+    if(this.#countriesAppeared.length == this.#countries.length){
+      console.log("All countries guessed")
+    }
+
+    let appeared;
+    do{
+      this.#toGuess = getRandomElement(this.#countries);
+      appeared= this.#countriesAppeared.includes(this.#toGuess);
+    }while(appeared);
+    this.#countriesAppeared.push(this.#toGuess);
+    this.displayGuessing()
+  }
+
+  displayGuessing(){
+
+    restcountriesInfo(this.#toGuess)
+    .then((res)=>{
+      console.log(res)
+      toGuessImg.src=res[0].flags.png
+      toGuessName.innerHTML = all_countries[this.#toGuess].es
+    })
+
+  }
+
+  getToGuess(){
+    return this.#toGuess;
+  }
+
+}
+
+
+
+
+let game = new Game("europe");
+
+console.log(game.getToGuess());
+game.nextGuess()
+
+
+
+
 
 // Espera a que la página cargue antes de ejecutar el script
 document.addEventListener("DOMContentLoaded", function () {
@@ -54,13 +133,8 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
-
-
-
-
 function learning(map,data){
   let lastCountry;
-  
     // Mapa base
     // Capa base de OpenStreetMap
     L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}.png', {
@@ -130,11 +204,8 @@ function learning(map,data){
 
 }
 
-
-
 function playing(map,data){
   let lastCountry;
-  
     // Mapa base
     // Capa base de OpenStreetMap
     L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}.png', {
@@ -145,11 +216,9 @@ function playing(map,data){
     // Función para resaltar el país específico
     function highlightFeature(e) {
 
-      console.log("!!!",e.target)
-
-      if("Spain"!=e.target.feature.properties.name){
+      if(all_countries[game.getToGuess()].en!=e.target.feature.properties.name){
         lastCountry=e.target;
-      
+        alert("Este país no es perro")
         e.target.setStyle({
           weight: 3,
           color: 'red',  // Color de la frontera
@@ -157,6 +226,16 @@ function playing(map,data){
           fillOpacity: 1  // Opacidad del relleno
         });
       
+      }
+      else{
+
+        e.target.setStyle({
+          weight: 3,
+          color: 'green',  // Color de la frontera
+          dashArray: '',
+          fillOpacity: 1  // Opacidad del relleno
+        });
+        game.nextGuess()
       }
 
       // Cambiar estilo del país resaltado
@@ -166,8 +245,8 @@ function playing(map,data){
 
     function showBorder(e) {
 
-      console.log(e.target.options)
-      if(e.target.options.color=="red"){
+      //console.log(e.target.options)
+      if(e.target.options.color=="red" || e.target.options.color=="green" ){
         return;
       }
 
@@ -180,7 +259,7 @@ function playing(map,data){
     }
 
     function noBorder(e){
-      if(e.target.options.color=="red"){
+      if(e.target.options.color=="red" || e.target.options.color=="green" ){
         return;
       }
       geojson.resetStyle(e.target);
@@ -212,16 +291,7 @@ function playing(map,data){
 }
 
 
-
-
-
-
-
-
-
-
-
-
+//
 async function displayCoordInfo(coord){
   let countryCode = await openweathermapCountryCode(coord);
   let countryInfo = await restcountriesInfo(countryCode);
@@ -240,7 +310,6 @@ async function displayCoordInfo(coord){
   }
 
 }
-
 //This function creates a marker and deletes the last marker
 function createOneMarker(coord,map){
   if(lastMarker){
@@ -249,7 +318,6 @@ function createOneMarker(coord,map){
   lastMarker = L.marker([coord.lat, coord.lng]);
   lastMarker.addTo(map);
 }
-
 //This function calls the the openweatherMap api with one coordinate, returning the country code
 async function openweathermapCountryCode(coord){
   let link = "http://api.openweathermap.org/geo/1.0/reverse?lat=" + coord.lat + "&lon=" + coord.lng + "&appid=" + apiKey;
@@ -260,7 +328,6 @@ async function openweathermapCountryCode(coord){
 
   return city[0].country;
 }
-
 //This function calls restCountries API with a country code returning more info about the country like its flag
 async function restcountriesInfo(countryCode){
   let link = "https://restcountries.com/v3.1/alpha/"+countryCode;
@@ -268,15 +335,12 @@ async function restcountriesInfo(countryCode){
   let country = await countryInfo.json();
   return country;
 }
-
 //Kelvin to Celcius
 function kelvinToCelcius(kelvin){
   let celsius = kelvin - 273.15
   return Math.round(celsius);
 }
-
 //This function calls openweather returning the current weather
-
 async function openWeatherCurrentWeather(coord){
 
   let link = "https://api.openweathermap.org/data/2.5/weather?lat="+coord.lat+"&lon="+coord.lng+"&appid="+apiKey;
@@ -290,8 +354,11 @@ async function openWeatherCurrentWeather(coord){
   return currentWeather;
 
 }
-
+//
 function getRandomElement(arr) {
   const randomIndex = Math.floor(Math.random() * arr.length);
   return arr[randomIndex];
 }
+
+
+

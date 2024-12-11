@@ -3,11 +3,10 @@
     margin-top: 50px;
     width: 100vw;
     height: 500px;
-    position: absolute;
+    /*position: absolute;*/
     opacity: 0;
     display: flex;
     justify-content: space-evenly;
-
 }
 
 #map{

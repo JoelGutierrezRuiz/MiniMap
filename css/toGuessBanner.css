@@ -1,0 +1,28 @@
+.to-guess-banner{
+    margin-top: 10px;
+    background-color: #F8F9FA;
+    padding:30px 0;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+
+    
+}
+
+.to-guess-banner img:nth-child(1){
+    height: 50px;
+}
+
+.alert-success{
+    position: absolute !important;
+    opacity: 0;
+}
+
+
+#to-guess-img{
+    height: 50px;
+}
+
+#to-guess-name{
+    font-size: 20px;
+}
