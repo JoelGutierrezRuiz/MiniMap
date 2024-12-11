@@ -15,6 +15,7 @@ const signUpButton = document.getElementById("sign-up-button")
 const signUpInput = document.getElementById("sign-up-input");
 
 
+
 if(!localStorage.users){
     localStorage.users = "[]";
 }
