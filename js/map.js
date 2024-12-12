@@ -3,7 +3,13 @@ const askingFor = getRandomElement(europe_codes);
 const flag = document.getElementById("flag");
 
 
+let gameLanguage = "es"
+let currentMarkerCountryCode;
+
+
 let playingMode = "learning"
+
+
 
 //Learning mode
 const countryName = document.getElementById("country_name");
@@ -62,6 +68,8 @@ class Game{
       this.#toGuess = getRandomElement(this.#countries);
       appeared= this.#countriesAppeared.includes(this.#toGuess);
     }while(appeared);
+
+
     this.#countriesAppeared.push(this.#toGuess);
     this.displayGuessing()
   }
@@ -71,7 +79,7 @@ class Game{
     restcountriesInfo(this.#toGuess)
     .then((res)=>{
       toGuessImg.src=res[0].flags.png
-      toGuessName.innerHTML = all_countries[this.#toGuess].es
+      toGuessName.innerHTML = all_countries[this.#toGuess][gameLanguage]
     })
 
   }
@@ -87,7 +95,7 @@ class Game{
 
 }
 
-let game = new Game("europe");
+let game = new Game("america");
 
 game.start()
 
@@ -126,10 +134,16 @@ document.addEventListener("DOMContentLoaded", function () {
   light.addEventListener("click",()=>{
 
 
-    let coords = 
-    all_countries[game.getToGuess()].coordinates;
+    if(light.innerHTML=="light_off"){
+      return;
+    }
+
+    console.log("aaaaa->>>>>"+game.getToGuess())
+
+    let coords = all_countries[game.getToGuess()].coordinates;
    
-      map.setView([coords.lat,coords.lng],5);
+    map.setView([coords.lat,coords.lng],5);
+    createOneMarker(coords,map)
 
   })
 
@@ -231,9 +245,10 @@ function playing(map,data){
       if(guessed){
         e.target.setStyle({
           weight: 3,
+          fillColor:"green",
           color: 'green',  // Color de la frontera
           dashArray: '',
-          fillOpacity: 1  // Opacidad del relleno
+          fillOpacity: 0.3  // Opacidad del relleno
         });
 
         if(!gameOver){
@@ -244,9 +259,10 @@ function playing(map,data){
       else if(!guessed && e.target.options.color!="green"){
         e.target.setStyle({
           weight: 3,
+          fillColor:"red",
           color: 'red',  // Color de la frontera
           dashArray: '',
-          fillOpacity: 1  // Opacidad del relleno
+          fillOpacity: 0.3  // Opacidad del relleno
         });
       }
 
@@ -320,14 +336,19 @@ async function displayCoordInfo(coord,countryCode){
     console.log("Esto no encuentra",countryInfo)
     flag.src= countryInfo[0].flags.png;
     population.innerHTML = countryInfo[0].population.toLocaleString();
-    capital.innerHTML = countryInfo[0].capital[0]
-  
+
+
+
+    capital.innerHTML = countryInfo[0].capital?countryInfo[0].capital[0]:"No capital";
+
+   
     weatherImg.src = "https://openweathermap.org/img/wn/"+currentWeather.weather[0].icon+"@2x.png"
     degrees.innerHTML =  kelvinToCelcius(currentWeather.main.temp)+"º" 
     
     console.log(countryCode)
 
-    countryName.innerHTML = all_countries[countryCode].es ;
+    currentMarkerCountryCode = countryCode;
+    countryName.innerHTML = all_countries[countryCode][gameLanguage] ;
   }
 
 }

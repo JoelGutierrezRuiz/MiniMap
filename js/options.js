@@ -6,6 +6,8 @@ const retryTimer = document.getElementById("");
 const language = document.getElementById("languages");
 const lightBulb = document.getElementById("lightBulb")
 
+const toGuessCountryName = document.getElementById("to-guess-name");
+
 learningMode.checked = true;
 
 
@@ -43,10 +45,9 @@ language.addEventListener("change", (e) => {
         e.target.options[0].innerHTML = "Español 🇪🇸 "
 
         countriesModeOptions[0].innerHTML = " Europa 🇪🇺 "
-        countriesModeOptions[2].innerHTML = "Todos los paises 🌎 "
-
-
-
+        countriesModeOptions[2].innerHTML = "Todos los paises 🌎 "    
+        gameLanguage = "es";
+    
     }
     else {
         e.target.options[1].innerHTML = "English 🇺🇸 "
@@ -54,7 +55,11 @@ language.addEventListener("change", (e) => {
 
         countriesModeOptions[0].innerHTML = " Europe 🇪🇺 "
         countriesModeOptions[2].innerHTML = "All countries 🌎 "
-
+        gameLanguage = "en"
     }
+
+    toGuessCountryName.innerHTML =  all_countries[game.getToGuess()][gameLanguage]
+    countryName.innerHTML = all_countries[currentMarkerCountryCode][gameLanguage];
+
 
 })
