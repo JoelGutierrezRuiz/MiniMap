@@ -17,6 +17,7 @@
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/signIn.css">
   <link rel="stylesheet" href="css/navbar.css">
+  <link rel="stylesheet" href="css/button.css">
 
   <link rel="stylesheet" href="css/toGuessBanner.css">
   <link rel="stylesheet" href="css/dashboard.css">
@@ -42,24 +43,39 @@
     <a class="navbar-brand" href="#">MiniMap</a>
   
     <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+
       <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
         <li class="nav-item active">
           <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link"> Learning Mode </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" href="#">Play</a>
-        </li>
-      </ul>
-      <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-      </form>
-    </div>
-  </nav>
 
+        <li>
+    
+          <select id="countriesMode">
+
+            <option> Europa 🇪🇺 </option>
+            <option> America  🇧🇷 </option>
+            <option>Todos los paises 🌎 </option>
+      
+          </select>
+      
+        </li>
+
+      </ul>
+
+
+    <select id="languages">
+
+      <option value="spanish"> Español 🇪🇸 </option>
+      <option value="english"> Inglés  🇺🇸</option>
+
+    </select>
+
+    </div>
+
+
+    
+  </nav>
 
 
 
@@ -69,25 +85,75 @@
   <div class="to-guess-banner">
 
     <div class="to-guess-playing-mode d-flex align-items-center">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Flag_of_Europe.svg/1280px-Flag_of_Europe.svg.png">
+      <img class="flag" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Flag_of_Europe.svg/1280px-Flag_of_Europe.svg.png">
       <h3>Europe Countries</h3>
     </div>
 
 
     <div class="to-guess-container d-flex justify-content-center align-items-center">
-      <img id="to-guess-img" src="">
+      <img class="flag" id="to-guess-img" src="">
       <h2 id="to-guess-name">To guess</h2>
     </div>
 
 
     <h3> <b id="progress">0</b>/<b id="progress-remaining">0</b></h3>
 
-    <span class="material-symbols-outlined bulb">
+    <span id="lightBulb" class="material-symbols-outlined bulb">
       lightbulb
     </span>
 
 
+    <label class="switch">
+      <input id="learningMode"  type="checkbox">
+      <span class="slider round"></span>
+    </label>
+
+
   </div>
+
+
+
+
+  <section id="timerContainer" class="d-none timer-container">
+
+    <div>
+
+      <h2 class="timer-number"> 00:00</h2>
+
+      <div class="timer-buttons">
+  
+        <button id="startTimer" class="app-button">
+
+          <span class="material-symbols-outlined">
+            play_arrow
+            </span>
+
+        </button>
+    
+    
+        <button id="retryTimer" class="app-button">
+          
+          <span class="material-symbols-outlined">
+            refresh
+            </span>
+
+        </button>
+  
+  
+      </div>
+  
+
+
+    </div>
+
+
+
+
+
+
+
+  </section>
+
 
 
   
@@ -105,7 +171,7 @@
     <section id="country_info">
       <div class="countryFlag">
         <h1 id="country_name">MiniMap</h1>
-        <img id="flag" src="https://static.vecteezy.com/system/resources/thumbnails/035/700/437/small/3d-cartoon-planet-earth-png.png">
+        <img id="flag" class="flag" src="https://static.vecteezy.com/system/resources/thumbnails/035/700/437/small/3d-cartoon-planet-earth-png.png">
       </div>
 
       <div class="weather">
@@ -316,7 +382,7 @@
   <script type="module" src="js/map.js"></script>
   <script src="js/learning.js"></script>
   <script src="js/play.js"></script>
-
+  <script src="js/options.js"></script>
 
 </body>
 

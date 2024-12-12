@@ -8,10 +8,6 @@
     
 }
 
-.to-guess-banner img:nth-child(1){
-    height: 50px;
-}
-
 .alert-success{
     position: absolute !important;
     opacity: 0;
@@ -26,9 +22,6 @@
     margin-left: 30px;
 }
 
-#to-guess-img{
-    height: 50px;
-}
 
 #to-guess-name{
     font-size: 20px;

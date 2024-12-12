@@ -14,8 +14,6 @@ const degrees= document.getElementById("degrees");
 
 
 //Playing mode
-
-
 const toGuessImg = document.getElementById("to-guess-img");
 const toGuessName = document.getElementById("to-guess-name");
 
@@ -23,7 +21,7 @@ const progressNumber = document.getElementById("progress");
 const progressRemainingNumber = document.getElementById("progress-remaining")
 
 
-
+let gameOver;
 
 
 let lastMarker;
@@ -52,7 +50,7 @@ class Game{
 
   nextGuess(){
 
-    let gameOver = this.#countriesAppeared.length == this.#countries.length;
+    gameOver = this.#countriesAppeared.length == this.#countries.length;
 
     if(gameOver){
       alert("All countries guessed")
@@ -89,7 +87,7 @@ class Game{
 
 }
 
-let game = new Game("america");
+let game = new Game("europe");
 
 game.start()
 
@@ -119,13 +117,7 @@ document.addEventListener("DOMContentLoaded", function () {
   .then(response => response.json())
   .then( (data)=> playing(map,data));
 
-
-
-  
-
-
 });
-
 
 function learning(map,data){
   let lastCountry;
@@ -198,10 +190,7 @@ function learning(map,data){
 
 }
 
-
-
 function playing(map,data){
-  let lastCountry;
     // Mapa base
     // Capa base de OpenStreetMap
     L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}.png', {
@@ -214,28 +203,28 @@ function playing(map,data){
 
       console.log("!!!!->",e.target)
 
-      if(all_countries[game.getToGuess()].en!=e.target.feature.properties.ADMIN){
-        lastCountry=e.target;
-        e.target.setStyle({
-          weight: 3,
-          color: 'red',  // Color de la frontera
-          dashArray: '',
-          fillOpacity: 1  // Opacidad del relleno
-        });
-        
+      let guessed = all_countries[game.getToGuess()].en==e.target.feature.properties.ADMIN;
 
-      
-      }
-      else{
+      if(guessed){
         e.target.setStyle({
           weight: 3,
           color: 'green',  // Color de la frontera
           dashArray: '',
           fillOpacity: 1  // Opacidad del relleno
         });
-        progressNumber.innerHTML = parseInt(progressNumber.innerHTML)+1;
 
-        game.nextGuess()
+        if(!gameOver){
+          progressNumber.innerHTML = parseInt(progressNumber.innerHTML)+1;
+          game.nextGuess()
+        }
+      }
+      else if(!guessed && e.target.options.color!="green"){
+        e.target.setStyle({
+          weight: 3,
+          color: 'red',  // Color de la frontera
+          dashArray: '',
+          fillOpacity: 1  // Opacidad del relleno
+        });
       }
 
       let coord = e.latlng;
@@ -296,7 +285,6 @@ function playing(map,data){
   
 
 }
-
 
 //
 async function displayCoordInfo(coord,countryCode){

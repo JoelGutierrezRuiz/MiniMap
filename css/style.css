@@ -5,7 +5,6 @@ body{
 
 #main{
     margin-top: 50px;
-    width: 100vw;
     height: 500px;
     /*position: absolute;*/
     opacity: 0;
@@ -24,10 +23,11 @@ body{
     letter-spacing: 5px;
 }
 
-#flag{
-    width:100px;
-    height: 80px;
-    object-fit: contain;
+.flag{
+    border-radius: 10px;
+    max-width: 100px;
+    height: 70px;
+    object-fit: cover;
 }
 
 #country_info{
@@ -48,8 +48,7 @@ body{
 }
 
 .countryFlag{
-    justify-content: center;
-
+    justify-content: space-around;
 }
 
 .population{
