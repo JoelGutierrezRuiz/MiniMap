@@ -117,6 +117,29 @@ document.addEventListener("DOMContentLoaded", function () {
   .then(response => response.json())
   .then( (data)=> playing(map,data));
 
+
+
+
+  const light = document.getElementById("lightBulb");
+
+
+  light.addEventListener("click",()=>{
+
+
+    let coords = 
+    all_countries[game.getToGuess()].coordinates;
+   
+      map.setView([coords.lat,coords.lng],5);
+
+  })
+
+
+
+
+
+
+
+
 });
 
 function learning(map,data){
@@ -357,6 +380,5 @@ function getRandomElement(arr) {
   const randomIndex = Math.floor(Math.random() * arr.length);
   return arr[randomIndex];
 }
-
 
 
