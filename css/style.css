@@ -1,4 +1,8 @@
 
+body{
+    background-color: #F8F9FA !important;
+}
+
 #main{
     margin-top: 50px;
     width: 100vw;
@@ -13,7 +17,6 @@
     border: 1px solid rgba(128, 128, 128, 0.192);
     border-radius: 20px;
     flex-grow: 0.9;
-    background-color: white;
 }
 
 #country_name{
@@ -29,7 +32,6 @@
 
 #country_info{
     border: 1px solid rgba(128, 128, 128, 0.192);
-    background-color: white;
     border-radius: 20px;
     padding: 0 10px;
     min-width:350px;
@@ -40,6 +42,7 @@
 }
 
 #country_info div{
+
     display: flex;
     align-items: center;
 }
