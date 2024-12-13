@@ -154,7 +154,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     let coords = all_countries[game.getToGuess()].coordinates;
    
-    map.setView([coords.lat,coords.lng],5);
+    map.setView([coords.lat,coords.lng],6);
     createOneMarker(coords,map)
 
   })

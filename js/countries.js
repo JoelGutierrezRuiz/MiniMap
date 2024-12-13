@@ -1,5 +1,6 @@
 //All countries
 const all_countries = {
+  "PS": { "es": "Palestina", "en": "Palestine", "coordinates": { "lat": 31.9522, "lng": 35.2332 } },
   "SB": { "es": "Islas Salomón", "en": "Solomon Islands", "coordinates": { "lat": -9.1332, "lng": 159.2200 } },
   "KR": { "es": "Corea del Sur", "en": "South Korea", "coordinates": { "lat": 36.5773, "lng": 127.9916 } },
   "CI": { "es": "Costa de Marfil", "en": "Ivory Coast", "coordinates": { "lat": 7.5399, "lng": -5.5471 } },
@@ -11,7 +12,7 @@ const all_countries = {
   "VI": { "es": "Islas Vírgenes", "en": "United States Virgin Islands", "coordinates": { "lat": 18.3358, "lng": -64.8963 } },
   "FK": { "es": "Islas Malvinas", "en": "Falkland Islands", "coordinates": { "lat": -51.6966, "lng": -57.8600 } },
   "AF": { "es": "Afganistán", "en": "Afghanistan", "coordinates": { "lat": 34.5553, "lng": 69.2075 } },
-  "AX": { "es": "Islas Åland", "en": "Åland Islands", "coordinates": { "lat": 60.1226, "lng": 19.9344 } },
+  "AX": { "es": "Islas Aland", "en": "Aland", "coordinates": { "lat": 60.1226, "lng": 19.9344 } },
   "AL": { "es": "Albania", "en": "Albania", "coordinates": { "lat": 41.3275, "lng": 19.8189 } },
   "DZ": { "es": "Argelia", "en": "Algeria", "coordinates": { "lat": 36.737232, "lng": 3.086472 } },
   "AS": { "es": "Samoa Americana", "en": "American Samoa", "coordinates": { "lat": -14.2700, "lng": -170.1323 } },
@@ -53,8 +54,6 @@ const all_countries = {
   "TD": { "es": "Chad", "en": "Chad", "coordinates": { "lat": 12.6348, "lng": 14.8485 } },
   "CL": { "es": "Chile", "en": "Chile", "coordinates": { "lat": -33.4489, "lng": -70.6693 } },
   "CN": { "es": "China", "en": "China", "coordinates": { "lat": 39.9042, "lng": 116.4074 } },
-  "CX": { "es": "Isla Christmas", "en": "Christmas Island", "coordinates": { "lat": -10.4475, "lng": 105.6904 } },
-  "CC": { "es": "Islas Cocos", "en": "Cocos (Keeling) Islands", "coordinates": { "lat": -12.1642, "lng": 96.8709 } },
   "CO": { "es": "Colombia", "en": "Colombia", "coordinates": { "lat": 4.7110, "lng": -74.0721 } },
   "KM": { "es": "Comoras", "en": "Comoros", "coordinates": { "lat": -11.7011, "lng": 43.2547 } },
   "CG": { "es": "República del Congo", "en": "Republic of Congo", "coordinates": { "lat": -4.2634, "lng": 15.2429 } },
@@ -94,7 +93,7 @@ const all_countries = {
   "GW": { "es": "Guinea-Bisáu", "en": "Guinea Bissau", "coordinates": { "lat": 11.8192, "lng": -15.1804 } },
   "HT": { "es": "Haití", "en": "Haiti", "coordinates": { "lat": 18.5943, "lng": -72.3074 } },
   "HN": { "es": "Honduras", "en": "Honduras", "coordinates": { "lat": 13.9670, "lng": -85.9450 } },
-  "HK": { "es": "Hong Kong", "en": "Hong Kong", "coordinates": { "lat": 22.3193, "lng": 114.1694 } },
+  "HK": { "es": "Hong Kong", "en": "Hong Kong S.A.R.", "coordinates": { "lat": 22.3193, "lng": 114.1694 } },
   "HU": { "es": "Hungría", "en": "Hungary", "coordinates": { "lat": 47.4979, "lng": 19.0402 } },
   "IS": { "es": "Islandia", "en": "Iceland", "coordinates": { "lat": 64.1355, "lng": -21.8954 } },
   "IN": { "es": "India", "en": "India", "coordinates": { "lat": 28.6139, "lng": 77.2090 } },
@@ -121,7 +120,7 @@ const all_countries = {
   "LI": { "es": "Liechtenstein", "en": "Liechtenstein", "coordinates": { "lat": 47.1415, "lng": 9.5215 } },
   "LT": { "es": "Lituania", "en": "Lithuania", "coordinates": { "lat": 54.6892, "lng": 25.2798 } },
   "LU": { "es": "Luxemburgo", "en": "Luxembourg", "coordinates": { "lat": 49.6117, "lng": 6.13 } },
-  "MO": { "es": "Macao", "en": "Macao", "coordinates": { "lat": 22.1987, "lng": 113.5439 } },
+  "MO": { "es": "Macao", "en": "Macao S.A.R", "coordinates": { "lat": 22.1987, "lng": 113.5439 } },
   "MK": { "es": "Macedonia", "en": "Macedonia", "coordinates": { "lat": 41.9981, "lng": 21.4254 } },
   "MG": { "es": "Madagascar", "en": "Madagascar", "coordinates": { "lat": -18.8792, "lng": 47.5079 } },
   "MW": { "es": "Malaui", "en": "Malawi", "coordinates": { "lat": -13.2543, "lng": 34.3015 } },
@@ -194,7 +193,6 @@ const all_countries = {
   "LK": { "es": "Sri Lanka", "en": "Sri Lanka", "coordinates": { "lat": 6.9271, "lng": 79.8612 } },
   "SD": { "es": "Sudán", "en": "Sudan", "coordinates": { "lat": 15.5007, "lng": 32.5599 } },
   "SR": { "es": "Surinam", "en": "Suriname", "coordinates": { "lat": 5.8664, "lng": -55.1710 } },
-  "SJ": { "es": "Islas Svalbard y Jan Mayen", "en": "Svalbard and Jan Mayen", "coordinates": { "lat": 78.2232, "lng": 15.6469 } },
   "SE": { "es": "Suecia", "en": "Sweden", "coordinates": { "lat": 59.3326, "lng": 18.0649 } },
   "CH": { "es": "Suiza", "en": "Switzerland", "coordinates": { "lat": 46.9481, "lng": 7.4474 } },
   "SY": { "es": "Siria", "en": "Syria", "coordinates": { "lat": 33.5138, "lng": 36.2765 } },
@@ -204,7 +202,6 @@ const all_countries = {
   "TZ": { "es": "Tanzania", "en": "United Republic of Tanzania", "coordinates": { "lat": -6.7924, "lng": 39.2083 } },
   "TL": { "es": "Timor Oriental", "en": "East Timor", "coordinates": { "lat": -8.5567, "lng": 125.5749 } },
   "TG": { "es": "Togo", "en": "Togo", "coordinates": { "lat": 6.1369, "lng": 1.2123 } },
-  "TK": { "es": "Tokelau", "en": "Tokelau", "coordinates": { "lat": -9.2003, "lng": -171.8575 } },
   "TO": { "es": "Tonga", "en": "Tonga", "coordinates": { "lat": -21.1340, "lng": -175.2011 } },
   "TT": { "es": "Trinidad y Tobago", "en": "Trinidad and Tobago", "coordinates": { "lat": 10.6918, "lng": -61.2225 } },
   "TN": { "es": "Túnez", "en": "Tunisia", "coordinates": { "lat": 36.8000, "lng": 10.1797 } },
@@ -237,6 +234,8 @@ const all_countries = {
 const all_country_codes = Object.keys(all_countries);
 //EU countries
 const europe_countries = {
+  "LI": { "es": "Liechtenstein", "en": "Liechtenstein", "coordinates": { "lat": 47.1415, "lng": 9.5215 } },
+  "AD": { "es": "Andorra", "en": "Andorra", "coordinates": { "lat": 42.5078, "lng": 1.5211 } },
   "AT": { "es": "Austria", "en": "Austria" },
   "BE": { "es": "Bélgica", "en": "Belgium" },
   "BG": { "es": "Bulgaria", "en": "Bulgaria" },
@@ -406,6 +405,9 @@ const africa_codes = Object.keys(africa_countries);
 
 //Asia countries 
 const asia_countries = {
+  "NR": { "es": "Nauru", "en": "Nauru", "coordinates": { "lat": -0.5228, "lng": 166.9315 } },
+  "PS": { "es": "Palestina", "en": "Palestine", "coordinates": { "lat": 31.9522, "lng": 35.2332 } },
+  "MO": { "es": "Macao", "en": "Macao S.A.R", "coordinates": { "lat": 22.1987, "lng": 113.5439 } },
   "TW": { "es": "Taiwán", "en": "Taiwan", "coordinates": { "lat": 23.6978, "lng": 120.9605 } },
   "AF": { "es": "Afganistán", "en": "Afghanistan" },
   "AM": { "es": "Armenia", "en": "Armenia" },
