@@ -108,7 +108,7 @@ const all_countries = {
   "JO": { "es": "Jordania", "en": "Jordan", "coordinates": { "lat": 31.9554, "lng": 35.9450 } },
   "KZ": { "es": "Kazajistán", "en": "Kazakhstan", "coordinates": { "lat": 51.1694, "lng": 71.4491 } },
   "KE": { "es": "Kenia", "en": "Kenya", "coordinates": { "lat": -1.2921, "lng": 36.8219 } },
-  "KI": { "es": "Kiribati", "en": "Kiribati", "coordinates": { "lat": -1.4516, "lng": 173.0310 } },
+  "KI": { "es": "Kiribati", "en": "Kiribati", "coordinates": { "lat": 1.7944318, "lng": -157.4971389 } },
   "KW": { "es": "Kuwait", "en": "Kuwait", "coordinates": { "lat": 29.3759, "lng": 47.9774 } },
   "KG": { "es": "Kirguistán", "en": "Kyrgyzstan", "coordinates": { "lat": 42.8746, "lng": 74.6122 } },
   "LA": { "es": "Laos", "en": "Laos", "coordinates": { "lat":17.9605855, "lng": 102.5233646} },
