@@ -1,12 +1,13 @@
 //All countries
-
 const all_countries = {
+  "SB": { "es": "Islas Salomón", "en": "Solomon Islands", "coordinates": { "lat": -9.1332, "lng": 159.2200 } },
+  "KR": { "es": "Corea del Sur", "en": "South Korea", "coordinates": { "lat": 36.5773, "lng": 127.9916 } },
+  "CI": { "es": "Costa de Marfil", "en": "Ivory Coast", "coordinates": { "lat": 7.5399, "lng": -5.5471 } },
+  "SS": { "es": "Sudán del Sur", "en": "South Sudan", "coordinates": { "lat": 6.8777, "lng": 31.3070 } },
   "GY": { "es": "Guyana", "en": "Guyana", "coordinates": { "lat": 4.8604, "lng": -58.9302 } },
   "DM": { "es": "Dominica", "en": "Dominica", "coordinates": { "lat": 15.4148, "lng": -61.3707 } },
   "AG": {"es": "Antigua y Barbuda","en": "Antigua and Barbuda","coordinates": {"lat": 17.0608,"lng": -61.7964}},
   "MS": { "es": "Montserrat", "en": "Montserrat", "coordinates": { "lat": 16.7425, "lng": -62.2181 } },
-"GS": {"es": "Islas Georgias del Sur y Sandwich del Sur","en": "South Georgia and South Sandwich Islands","coordinates": {"lat": -54.4296,"lng": -36.5870}},
-
   "VI": { "es": "Islas Vírgenes", "en": "United States Virgin Islands", "coordinates": { "lat": 18.3358, "lng": -64.8963 } },
   "FK": { "es": "Islas Malvinas", "en": "Falkland Islands", "coordinates": { "lat": -51.6966, "lng": -57.8600 } },
   "AF": { "es": "Afganistán", "en": "Afghanistan", "coordinates": { "lat": 34.5553, "lng": 69.2075 } },
@@ -41,7 +42,7 @@ const all_countries = {
   "IO": { "es": "Territorio Británico del Océano Índico", "en": "British Indian Ocean Territory", "coordinates": { "lat": -6.3432, "lng": 71.8767 } },
   "BN": { "es": "Brunéi", "en": "Brunei", "coordinates": { "lat": 4.9031, "lng": 114.9398 } },
   "BG": { "es": "Bulgaria", "en": "Bulgaria", "coordinates": { "lat": 42.6977, "lng": 23.3219 } },
-  "BF": { "es": "Burkina Faso", "en": "Burkina Faso", "coordinates": { "lat": 12.6392, "lng": -8.0029 } },
+  "BF": { "es": "Burkina Faso", "en": "Burkina Faso", "coordinates": { "lat": 12.3595952, "lng": -1.7320597} },
   "BI": { "es": "Burundi", "en": "Burundi", "coordinates": { "lat": -3.3731, "lng": 29.9187 } },
   "KH": { "es": "Camboya", "en": "Cambodia", "coordinates": { "lat": 11.5564, "lng": 104.9282 } },
   "CM": { "es": "Camerún", "en": "Cameroon", "coordinates": { "lat": 3.8480, "lng": 11.5021 } },
@@ -56,7 +57,7 @@ const all_countries = {
   "CC": { "es": "Islas Cocos", "en": "Cocos (Keeling) Islands", "coordinates": { "lat": -12.1642, "lng": 96.8709 } },
   "CO": { "es": "Colombia", "en": "Colombia", "coordinates": { "lat": 4.7110, "lng": -74.0721 } },
   "KM": { "es": "Comoras", "en": "Comoros", "coordinates": { "lat": -11.7011, "lng": 43.2547 } },
-  "CG": { "es": "República del Congo", "en": "Congo", "coordinates": { "lat": -4.2634, "lng": 15.2429 } },
+  "CG": { "es": "República del Congo", "en": "Republic of Congo", "coordinates": { "lat": -4.2634, "lng": 15.2429 } },
   "CD": { "es": "República Democrática del Congo", "en": "Democratic Republic of the Congo", "coordinates": { "lat": -4.4419, "lng": 15.2663 } },
   "CK": { "es": "Islas Cook", "en": "Cook Islands", "coordinates": { "lat": -21.2367, "lng": -159.7777 } },
   "CR": { "es": "Costa Rica", "en": "Costa Rica", "coordinates": { "lat": 9.9333, "lng": -84.0833 } },
@@ -73,7 +74,7 @@ const all_countries = {
   "GQ": { "es": "Guinea Ecuatorial", "en": "Equatorial Guinea", "coordinates": { "lat": 3.7500, "lng": 8.7833 } },
   "ER": { "es": "Eritrea", "en": "Eritrea", "coordinates": { "lat": 15.3229, "lng": 38.9251 } },
   "EE": { "es": "Estonia", "en": "Estonia", "coordinates": { "lat": 59.4370, "lng": 24.7535 } },
-  "SZ": { "es": "Esuatini", "en": "Eswatini", "coordinates": { "lat": -26.5225, "lng": 31.4659 } },
+  "SZ": { "es": "Esuatini", "en": "Swaziland", "coordinates": { "lat": -26.5225, "lng": 31.4659 } },
   "ET": { "es": "Etiopía", "en": "Ethiopia", "coordinates": { "lat": 9.145, "lng": 40.4897 } },
   "FJ": { "es": "Fiyi", "en": "Fiji", "coordinates": { "lat": -17.7134, "lng": 178.0650 } },
   "FI": { "es": "Finlandia", "en": "Finland", "coordinates": { "lat": 60.1699, "lng": 24.9384 } },
@@ -90,7 +91,7 @@ const all_countries = {
   "GU": { "es": "Guam", "en": "Guam", "coordinates": { "lat": 13.4443, "lng": 144.7937 } },
   "GT": { "es": "Guatemala", "en": "Guatemala", "coordinates": { "lat": 14.6349, "lng": -90.5069 } },
   "GN": { "es": "Guinea", "en": "Guinea", "coordinates": { "lat": 9.5095, "lng": -13.7122 } },
-  "GW": { "es": "Guinea-Bisáu", "en": "Guinea-Bissau", "coordinates": { "lat": 11.8192, "lng": -15.1804 } },
+  "GW": { "es": "Guinea-Bisáu", "en": "Guinea Bissau", "coordinates": { "lat": 11.8192, "lng": -15.1804 } },
   "HT": { "es": "Haití", "en": "Haiti", "coordinates": { "lat": 18.5943, "lng": -72.3074 } },
   "HN": { "es": "Honduras", "en": "Honduras", "coordinates": { "lat": 13.9670, "lng": -85.9450 } },
   "HK": { "es": "Hong Kong", "en": "Hong Kong", "coordinates": { "lat": 22.3193, "lng": 114.1694 } },
@@ -111,7 +112,7 @@ const all_countries = {
   "KI": { "es": "Kiribati", "en": "Kiribati", "coordinates": { "lat": -1.4516, "lng": 173.0310 } },
   "KW": { "es": "Kuwait", "en": "Kuwait", "coordinates": { "lat": 29.3759, "lng": 47.9774 } },
   "KG": { "es": "Kirguistán", "en": "Kyrgyzstan", "coordinates": { "lat": 42.8746, "lng": 74.6122 } },
-  "LA": { "es": "Laos", "en": "Laos", "coordinates": { "lat": 17.9757, "lng": 102.6331 } },
+  "LA": { "es": "Laos", "en": "Laos", "coordinates": { "lat":17.9605855, "lng": 102.5233646} },
   "LV": { "es": "Letonia", "en": "Latvia", "coordinates": { "lat": 56.946, "lng": 24.1059 } },
   "LB": { "es": "Líbano", "en": "Lebanon", "coordinates": { "lat": 33.8886, "lng": 35.4955 } },
   "LS": { "es": "Lesoto", "en": "Lesotho", "coordinates": { "lat": -29.6091, "lng": 28.2336 } },
@@ -131,7 +132,6 @@ const all_countries = {
   "MH": { "es": "Islas Marshall", "en": "Marshall Islands", "coordinates": { "lat": 7.0654, "lng": 171.0703 } },
   "MR": { "es": "Mauritania", "en": "Mauritania", "coordinates": { "lat": 18.0792, "lng": -15.9750 } },
   "MU": { "es": "Mauricio", "en": "Mauritius", "coordinates": { "lat": -20.3484, "lng": 57.5522 } },
-  "YT": { "es": "Mayotte", "en": "Mayotte", "coordinates": { "lat": -12.8275, "lng": 45.1663 } },
   "MX": { "es": "México", "en": "Mexico", "coordinates": { "lat": 19.4326, "lng": -99.1332 } },
   "FM": { "es": "Micronesia", "en": "Federated States of Micronesia", "coordinates": { "lat": 6.915, "lng": 158.1699 } },
   "MD": { "es": "Moldavia", "en": "Moldova", "coordinates": { "lat": 47.0105, "lng": 28.8638 } },
@@ -170,7 +170,6 @@ const all_countries = {
   "RO": { "es": "Rumanía", "en": "Romania", "coordinates": { "lat": 44.4268, "lng": 26.1025 } },
   "RU": { "es": "Rusia", "en": "Russia", "coordinates": { "lat": 55.7558, "lng": 37.6176 } },
   "RW": { "es": "Ruanda", "en": "Rwanda", "coordinates": { "lat": -1.9403, "lng": 29.8739 } },
-  "RE": { "es": "Reunión", "en": "Reunion", "coordinates": { "lat": -20.9584, "lng": 55.2913 } },
   "BL": { "es": "San Bartolomé", "en": "Saint Barthelemy", "coordinates": { "lat": 17.8946, "lng": -62.8497 } },
   "SH": { "es": "Santa Elena", "en": "Saint Helena", "coordinates": { "lat": -15.931, "lng": -5.0707 } },
   "KN": { "es": "San Cristóbal y Nieves", "en": "Saint Kitts and Nevis", "coordinates": { "lat": 17.3578, "lng": -62.7826 } },
@@ -202,7 +201,7 @@ const all_countries = {
   "TW": { "es": "Taiwán", "en": "Taiwan", "coordinates": { "lat": 25.0324, "lng": 121.5645 } },
   "TJ": { "es": "Tayikistán", "en": "Tajikistan", "coordinates": { "lat": 38.5598, "lng": 68.7775 } },
   "TH": { "es": "Tailandia", "en": "Thailand", "coordinates": { "lat": 13.7563, "lng": 100.5018 } },
-  "TZ": { "es": "Tanzania", "en": "Tanzania", "coordinates": { "lat": -6.7924, "lng": 39.2083 } },
+  "TZ": { "es": "Tanzania", "en": "United Republic of Tanzania", "coordinates": { "lat": -6.7924, "lng": 39.2083 } },
   "TL": { "es": "Timor Oriental", "en": "East Timor", "coordinates": { "lat": -8.5567, "lng": 125.5749 } },
   "TG": { "es": "Togo", "en": "Togo", "coordinates": { "lat": 6.1369, "lng": 1.2123 } },
   "TK": { "es": "Tokelau", "en": "Tokelau", "coordinates": { "lat": -9.2003, "lng": -171.8575 } },
@@ -212,10 +211,10 @@ const all_countries = {
   "TR": { "es": "Turquía", "en": "Turkey", "coordinates": { "lat": 39.9334, "lng": 32.8597 } },
   "TM": { "es": "Turkmenistán", "en": "Turkmenistan", "coordinates": { "lat": 39.1981, "lng": 59.4145 } },
   "TC": { "es": "Islas Turcas y Caicos", "en": "Turks and Caicos Islands", "coordinates": { "lat": 21.6947, "lng": -71.7979 } },
-  "TV": { "es": "Tuvalu", "en": "Tuvalu", "coordinates": { "lat": -7.1095, "lng": 179.1940 } },
+  "TV": { "es": "Tuvalu", "en": "Tuvalu", "coordinates": { "lat": -8.6169465, "lng": 179.0843874} },
   "UG": { "es": "Uganda", "en": "Uganda", "coordinates": { "lat": 0.3136, "lng": 32.5818 } },
   "UA": { "es": "Ucrania", "en": "Ukraine", "coordinates": { "lat": 50.4501, "lng": 30.5427 } },
-  "AE": { "es": "Emiratos Árabes Unidos", "en": "United Arab Emirates", "coordinates": { "lat": 25.276987, "lng": 51.520008 } },
+  "AE": { "es": "Emiratos Árabes Unidos", "en": "United Arab Emirates", "coordinates": { "lat": 24.3868242, "lng": 54.2467936 } },
   "GB": { "es": "Reino Unido", "en": "United Kingdom", "coordinates": { "lat": 51.5074, "lng": -0.1278 } },
   "US": { "es": "Estados Unidos", "en": "United States of America", "coordinates": { "lat": 38.9072, "lng": -77.0369 } },
   "UR": { "es": "Uruguay", "en": "Uruguay", "coordinates": { "lat": -34.9011, "lng": -56.1645 } },
@@ -229,6 +228,8 @@ const all_countries = {
   "ZM": { "es": "Zambia", "en": "Zambia", "coordinates": { "lat": -15.3875, "lng": 28.3221 } },
   "ZW": { "es": "Zimbabue", "en": "Zimbabwe", "coordinates": { "lat": -17.8292, "lng": 31.0522 } }
 }
+
+
 
 
 
@@ -265,8 +266,6 @@ const europe_countries = {
   "SE": { "es": "Suecia", "en": "Sweden" },
   "IS": { "es": "Islandia", "en": "Iceland" },
   "AL": { "es": "Albania", "en": "Albania" },
-  "AM": { "es": "Armenia", "en": "Armenia" },
-  "AZ": { "es": "Azerbaiyán", "en": "Azerbaijan" },
   "BY": { "es": "Bielorrusia", "en": "Belarus" },
   "MD": { "es": "Moldavia", "en": "Moldova" },
   "MC": { "es": "Mónaco", "en": "Monaco" },
@@ -287,8 +286,7 @@ const europe_codes = Object.keys(europe_countries);
 
 //America countries
 const america_countries = {
-  "AQ": {"es": "Antártida","en": "Antarctica","coordinates": {"lat": -82.8628,"lng": 135.0000}},
-  "GS": {"es": "Islas Georgias y Sandwich ","en": " Georgia and Sandwich Islands","coordinates": {"lat": -54.4296,"lng": -36.5870}},
+  "GD": { "es": "Granada", "en": "Grenada", "coordinates": { "lat": 12.1165, "lng": -61.6790 } },
   "AR": { "es": "Argentina", "en": "Argentina" },
   "BR": { "es": "Brasil", "en": "Brazil" },
   "CA": { "es": "Canadá", "en": "Canada" },
@@ -323,14 +321,12 @@ const america_countries = {
   "FK": { "es": "Islas Malvinas", "en": "Falkland Islands" },
   "BO": { "es": "Bolivia", "en": "Bolivia" },
   "BL": { "es": "San Bartolomé", "en": "Saint Barthélemy" },
-  "PF": { "es": "Polinesia Francesa", "en": "French Polynesia" },
   "PM": { "es": "San Pedro y Miquelón", "en": "Saint Pierre and Miquelon" },
   "AS": { "es": "Samoa Americana", "en": "American Samoa" },
   "AW": { "es": "Aruba", "en": "Aruba" },
   "AI": { "es": "Anguila", "en": "Anguilla" },
   "KY": { "es": "Islas Caimán", "en": "Cayman Islands" },
   "TC": { "es": "Islas Turcas y Caicos", "en": "Turks and Caicos Islands" },
-  "FM": { "es": "Micronesia", "en": "Micronesia" },
   "GU": { "es": "Guam", "en": "Guam" },
   "VI": { "es": "Islas Vírgenes de los EE. UU.", "en": "U.S. Virgin Islands" },
   "BS": { "es": "Bahamas", "en": "Bahamas" },
@@ -342,3 +338,147 @@ const america_countries = {
 };
 //
 const america_codes = Object.keys(america_countries);
+
+
+//Africa countries
+const africa_countries = {
+  "EH": { "es": "Sáhara Occidental", "en": "Western Sahara" },
+  "MA": { "es": "Marruecos", "en": "Morocco" },
+  "CI": { "es": "Costa de Marfil", "en": "Ivory Coast" },
+  "MZ": { "es": "Mozambique", "en": "Mozambique" },
+  "DZ": { "es": "Argelia", "en": "Algeria" },
+  "AO": { "es": "Angola", "en": "Angola" },
+  "BJ": { "es": "Benín", "en": "Benin" },
+  "BW": { "es": "Botsuana", "en": "Botswana" },
+  "BF": { "es": "Burkina Faso", "en": "Burkina Faso" },
+  "BI": { "es": "Burundi", "en": "Burundi" },
+  "CM": { "es": "Camerún", "en": "Cameroon" },
+  "CV": { "es": "Cabo Verde", "en": "Cape Verde" },
+  "CF": { "es": "República Centroafricana", "en": "Central African Republic" },
+  "TD": { "es": "Chad", "en": "Chad" },
+  "KM": { "es": "Comoras", "en": "Comoros" },
+  "CG": { "es": "República del Congo", "en": "Republic of the Congo" },
+  "CD": { "es": "República Democrática del Congo", "en": "Democratic Republic of the Congo" },
+  "DJ": { "es": "Yibuti", "en": "Djibouti" },
+  "EG": { "es": "Egipto", "en": "Egypt" },
+  "GQ": { "es": "Guinea Ecuatorial", "en": "Equatorial Guinea" },
+  "ER": { "es": "Eritrea", "en": "Eritrea" },
+  "SZ": { "es": "Suazilandia", "en": "Swaziland" },
+  "ET": { "es": "Etiopía", "en": "Ethiopia" },
+  "GA": { "es": "Gabón", "en": "Gabon" },
+  "GM": { "es": "Gambia", "en": "Gambia" },
+  "GH": { "es": "Ghana", "en": "Ghana" },
+  "GN": { "es": "Guinea", "en": "Guinea" },
+  "GW": { "es": "Guinea-Bisáu", "en": "Guinea Bissau" },
+  "KE": { "es": "Kenia", "en": "Kenya" },
+  "LS": { "es": "Lesoto", "en": "Lesotho" },
+  "LR": { "es": "Liberia", "en": "Liberia" },
+  "LY": { "es": "Libia", "en": "Libya" },
+  "MG": { "es": "Madagascar", "en": "Madagascar" },
+  "MW": { "es": "Malaui", "en": "Malawi" },
+  "ML": { "es": "Malí", "en": "Mali" },
+  "MR": { "es": "Mauritania", "en": "Mauritania" },
+  "MU": { "es": "Mauricio", "en": "Mauritius" },
+  "NA": { "es": "Namibia", "en": "Namibia" },
+  "NE": { "es": "Níger", "en": "Niger" },
+  "NG": { "es": "Nigeria", "en": "Nigeria" },
+  "RW": { "es": "Ruanda", "en": "Rwanda" },
+  "ST": { "es": "Santo Tomé y Príncipe", "en": "São Tomé and Príncipe" },
+  "SN": { "es": "Senegal", "en": "Senegal" },
+  "SC": { "es": "Seychelles", "en": "Seychelles" },
+  "SL": { "es": "Sierra Leona", "en": "Sierra Leone" },
+  "SO": { "es": "Somalia", "en": "Somalia" },
+  "ZA": { "es": "Sudáfrica", "en": "South Africa" },
+  "SS": { "es": "Sudán del Sur", "en": "South Sudan" },
+  "SD": { "es": "Sudán", "en": "Sudan" },
+  "TZ": { "es": "Tanzania", "en": "Tanzania" },
+  "TG": { "es": "Togo", "en": "Togo" },
+  "TN": { "es": "Túnez", "en": "Tunisia" },
+  "UG": { "es": "Uganda", "en": "Uganda" },
+  "ZM": { "es": "Zambia", "en": "Zambia" },
+  "ZW": { "es": "Zimbabue", "en": "Zimbabwe" }
+};
+
+//
+const africa_codes = Object.keys(africa_countries);
+
+
+
+//Asia countries 
+const asia_countries = {
+  "TW": { "es": "Taiwán", "en": "Taiwan", "coordinates": { "lat": 23.6978, "lng": 120.9605 } },
+  "AF": { "es": "Afganistán", "en": "Afghanistan" },
+  "AM": { "es": "Armenia", "en": "Armenia" },
+  "AZ": { "es": "Azerbaiyán", "en": "Azerbaijan" },
+  "BH": { "es": "Bahrein", "en": "Bahrain" },
+  "BD": { "es": "Bangladés", "en": "Bangladesh" },
+  "BT": { "es": "Bután", "en": "Bhutan" },
+  "MM": { "es": "Birmania", "en": "Myanmar" },
+  "KH": { "es": "Camboya", "en": "Cambodia" },
+  "CN": { "es": "China", "en": "China" },
+  "CY": { "es": "Chipre", "en": "Cyprus" },
+  "GE": { "es": "Georgia", "en": "Georgia" },
+  "IN": { "es": "India", "en": "India" },
+  "ID": { "es": "Indonesia", "en": "Indonesia" },
+  "IR": { "es": "Irán", "en": "Iran" },
+  "IQ": { "es": "Irak", "en": "Iraq" },
+  "IL": { "es": "Israel", "en": "Israel" },
+  "JP": { "es": "Japón", "en": "Japan" },
+  "JO": { "es": "Jordania", "en": "Jordan" },
+  "KZ": { "es": "Kazajistán", "en": "Kazakhstan" },
+  "KW": { "es": "Kuwait", "en": "Kuwait" },
+  "KG": { "es": "Kirguistán", "en": "Kyrgyzstan" },
+  "LA": { "es": "Laos", "en": "Laos" },
+  "LB": { "es": "Líbano", "en": "Lebanon" },
+  "MY": { "es": "Malasia", "en": "Malaysia" },
+  "MV": { "es": "Maldivas", "en": "Maldives" },
+  "MN": { "es": "Mongolia", "en": "Mongolia" },
+  "NP": { "es": "Nepal", "en": "Nepal" },
+  "KP": { "es": "Corea del Norte", "en": "North Korea" },
+  "KR": { "es": "Corea del Sur", "en": "South Korea" },
+  "OM": { "es": "Omán", "en": "Oman" },
+  "PK": { "es": "Pakistán", "en": "Pakistan" },
+  "PH": { "es": "Filipinas", "en": "Philippines" },
+  "QA": { "es": "Catar", "en": "Qatar" },
+  "SA": { "es": "Arabia Saudita", "en": "Saudi Arabia" },
+  "SG": { "es": "Singapur", "en": "Singapore" },
+  "LK": { "es": "Sri Lanka", "en": "Sri Lanka" },
+  "SY": { "es": "Siria", "en": "Syria" },
+  "TJ": { "es": "Tayikistán", "en": "Tajikistan" },
+  "TH": { "es": "Tailandia", "en": "Thailand" },
+  "TL": { "es": "Timor Oriental", "en": "Timor-Leste" },
+  "TR": { "es": "Turquía", "en": "Turkey" },
+  "TM": { "es": "Turkmenistán", "en": "Turkmenistan" },
+  "AE": { "es": "Emiratos Árabes Unidos", "en": "United Arab Emirates" },
+  "UZ": { "es": "Uzbekistán", "en": "Uzbekistan" },
+  "VN": { "es": "Vietnam", "en": "Vietnam" },
+  "YE": { "es": "Yemen", "en": "Yemen" }
+};
+
+//
+const asia_codes = Object.keys(asia_countries);
+
+
+//Oceania countries 
+const oceania_countries = {
+  "PF": { "es": "Polinesia Francesa", "en": "French Polynesia" },
+  "NC": { "es": "Nueva Caledonia", "en": "New Caledonia", "coordinates": { "lat": -20.9043, "lng": 165.6180 } },
+  "NZ": { "es": "Nueva Zelanda", "en": "New Zealand", "coordinates": { "lat": -40.9006, "lng": 174.8860 } },
+  "AU": { "es": "Australia", "en": "Australia", "coordinates": { "lat": -25.2744, "lng": 133.7751 } },
+  "FJ": { "es": "Fiyi", "en": "Fiji", "coordinates": { "lat": -17.7134, "lng": 178.0650 } },
+  "FM": { "es": "Micronesia", "en": "Micronesia", "coordinates": { "lat": 6.9118, "lng": 158.2681 } },
+  "KI": { "es": "Islas Kiribati", "en": "Kiribati", "coordinates": { "lat": -3.3704, "lng": -168.7340 } },
+  "MH": { "es": "Islas Marshall", "en": "Marshall Islands", "coordinates": { "lat": 7.1315, "lng": 171.1840 } },
+  "MP": { "es": "Islas Marianas del Norte", "en": "Northern Mariana Islands", "coordinates": { "lat": 17.3308, "lng": 145.3847 } },
+  "PW": { "es": "Palaos", "en": "Palau", "coordinates": { "lat": 7.5149, "lng": 134.5825 } },
+  "PG": { "es": "Papúa Nueva Guinea", "en": "Papua New Guinea", "coordinates": { "lat": -6.3149, "lng": 143.9555 } },
+  "WS": { "es": "Samoa", "en": "Samoa", "coordinates": { "lat": -13.7590, "lng": -172.1046 } },
+  "SB": { "es": "Islas Salomón", "en": "Solomon Islands", "coordinates": { "lat": -9.1332, "lng": 159.2200 } },
+  "TO": { "es": "Tonga", "en": "Tonga", "coordinates": { "lat": -21.1781, "lng": -175.1982 } },
+  "TV": { "es": "Tuvalu", "en": "Tuvalu", "coordinates": { "lat": -7.1095, "lng": 177.6493 } },
+  "VU": { "es": "Vanuatu", "en": "Vanuatu", "coordinates": { "lat": -15.3767, "lng": 166.9592 } }
+};
+
+//
+
+const oceania_codes = Object.keys(oceania_countries);

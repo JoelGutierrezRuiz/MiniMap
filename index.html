@@ -53,9 +53,12 @@
     
           <select id="countriesMode">
 
-            <option> Europa 🇪🇺 </option>
-            <option> America  🇧🇷 </option>
-            <option>Todos los paises 🌎 </option>
+            <option value="europe"> Europa 🇪🇺 </option>
+            <option value="america"> America  🇧🇷 </option>
+            <option value="africa">África 🇿🇦 </option>
+            <option value="asia">Asia 🇨🇳 </option>
+            <option value="oceania">Oceanía  🇳🇿 </option>
+            <option value="all">Todos los paises 🌎 </option>
       
           </select>
       
@@ -84,10 +87,6 @@
 
   <div class="to-guess-banner">
 
-    <div class="to-guess-playing-mode d-flex align-items-center">
-      <img class="flag" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Flag_of_Europe.svg/1280px-Flag_of_Europe.svg.png">
-      <h3>Europe Countries</h3>
-    </div>
 
 
     <div class="to-guess-container d-flex justify-content-center align-items-center">
@@ -175,7 +174,7 @@
       </div>
 
       <div class="weather">
-        <h2>Tiempo</h2>
+        <h2 id="weatherText">Clima</h2>
         <img id="weatherImg" src="#">
         <b id="degrees">22º</b>
       </div>
@@ -190,7 +189,7 @@
       </div>
 
       <div class="population">
-        <h3>Population</h3>
+        <h3 id="populationText">Población</h3>
         <span class="material-symbols-outlined">
           groups
         </span>

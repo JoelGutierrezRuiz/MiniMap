@@ -48,6 +48,19 @@ class Game{
       case "america":
         this.#countries = america_codes;
         break;
+      case "africa":
+        this.#countries = africa_codes;
+        break;
+      case "asia":
+        this.#countries = asia_codes;
+        break;
+        case "oceania":
+          this.#countries = oceania_codes;
+          break;
+        case "all":{
+          this.#countries = all_country_codes;
+          break;
+        }
     }
     this.#countriesAppeared = [];
 
@@ -95,8 +108,7 @@ class Game{
 
 }
 
-let game = new Game("america");
-
+let game = new Game("europe");
 game.start()
 
 

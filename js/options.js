@@ -1,5 +1,7 @@
 const learningMode = document.getElementById("learningMode");
 const countriesMode = document.getElementById("countriesMode");
+
+
 const timerContainer = document.getElementById("timerContainer");
 const startTimer = document.getElementById("");
 const retryTimer = document.getElementById("");
@@ -8,14 +10,21 @@ const lightBulb = document.getElementById("lightBulb")
 
 const toGuessCountryName = document.getElementById("to-guess-name");
 
+const populationText = document.getElementById("populationText");
+const weatherText = document.getElementById("weatherText");
+
 learningMode.checked = true;
 
 
 learningMode.addEventListener("click", (e) => {
 
 
-    let checked = e.target.checked;
+    game = new Game(countriesMode.value);
+    game.start()
 
+
+
+    let checked = e.target.checked;
     if (checked) {
         lightBulb.innerHTML = "lightbulb"
         timerContainer.classList.remove("d-flex");
@@ -26,13 +35,7 @@ learningMode.addEventListener("click", (e) => {
         timerContainer.classList.remove("d-none");
         lightBulb.innerHTML = "light_off";
     }
-
-    console.log(e.target.checked)
-
-
 })
-
-
 
 language.addEventListener("change", (e) => {
 
@@ -43,9 +46,13 @@ language.addEventListener("change", (e) => {
     if (lang == "spanish") {
         e.target.options[1].innerHTML = "Inglés 🇺🇸 "
         e.target.options[0].innerHTML = "Español 🇪🇸 "
+        weatherText.innerHTML="Clima";
+        populationText.innerHTML="Población";
 
-        countriesModeOptions[0].innerHTML = " Europa 🇪🇺 "
-        countriesModeOptions[2].innerHTML = "Todos los paises 🌎 "    
+        countriesModeOptions[0].innerHTML = "Europa 🇪🇺 "
+        countriesModeOptions[2].innerHTML = "África 🇿🇦 "
+        countriesModeOptions[4].innerHTML = "Oceanía  🇳🇿 "
+        countriesModeOptions[5].innerHTML = "Todos los paises 🌎 "    
         gameLanguage = "es";
     
     }
@@ -53,13 +60,28 @@ language.addEventListener("change", (e) => {
         e.target.options[1].innerHTML = "English 🇺🇸 "
         e.target.options[0].innerHTML = "Spanish 🇪🇸 "
 
-        countriesModeOptions[0].innerHTML = " Europe 🇪🇺 "
-        countriesModeOptions[2].innerHTML = "All countries 🌎 "
+        weatherText.innerHTML="Weather";
+        populationText.innerHTML="Population";
+
+        countriesModeOptions[0].innerHTML = "Europe 🇪🇺 "
+        countriesModeOptions[2].innerHTML = "Africa 🇿🇦 "
+        countriesModeOptions[4].innerHTML = "Oceania  🇳🇿 "
+        countriesModeOptions[5].innerHTML = "All countries 🌎 "  
         gameLanguage = "en"
     }
 
     toGuessCountryName.innerHTML =  all_countries[game.getToGuess()][gameLanguage]
     countryName.innerHTML = all_countries[currentMarkerCountryCode][gameLanguage];
+
+
+})
+
+
+
+countriesMode.addEventListener("change",(e)=>{
+
+    game = new Game(e.target.value);
+    game.start()
 
 
 })
