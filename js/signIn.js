@@ -1,28 +1,37 @@
-//play
+//
 
-const playContainer = document.getElementById("main");
+saveScoreContainer = document.getElementById("save-score");
+saveScoreInput = document.getElementById("saveScoreInput");
 
-//sign in
-const signInContainer = document.getElementById("sign-in");
-const signInInput = document.getElementById("sign-in-input");
-const signInButton = document.getElementById("sign-in-button");
-const singInSignUp = document.getElementById("sign-in-sign-up");
+coincidenceParent = document.getElementById("usersCoincidense");
 
-//Sign up
-const signUpContainer = document.getElementById("sign-up");
-const signUpSignIn = document.getElementById("sign-up-sign-in")
-const signUpButton = document.getElementById("sign-up-button")
-const signUpInput = document.getElementById("sign-up-input");
+saveScoreButton = document.getElementById("saveScoreButton");
 
+userFound = null;
+
+
+
+console.log(document)
 
 
 if(!localStorage.users){
     localStorage.users = "[]";
 }
 
-//showElement(signInContainer);
-ShowPlayContainer()
 
+
+//Close the save scroe 
+document.addEventListener("click",(e)=>{
+
+
+
+    if(e.target.id=="save-score"){
+        document.getElementById("save-score").remove()
+    }
+
+
+
+})
 
 
 
@@ -31,46 +40,112 @@ let allUsers =   JSON.parse(localStorage.users);
 
 
 
-signInButton.addEventListener("click",()=>{
 
-    let userName = signInInput.value;
 
-    if(!userName) return;
+//
+saveScoreInput.addEventListener("input",()=>{
+    clearCoincidence();
+    if(saveScoreInput.value==""){
 
-    if(exist(userName)){
-        hideElement(signInContainer);
-        ShowPlayContainer();
+        return
+    }
+    clearCoincidence();
+    const result = allUsers.filter(item => item.name.toLowerCase().startsWith(saveScoreInput.value.toLowerCase()));
+    result.forEach(element => {
+        
+        coincidenceParent.appendChild(createCoincidenceComponent(element));
+
+    });
+    console.log(result) 
+})
+
+
+
+
+
+function createCoincidenceComponent(data) {
+  // Crear el contenedor principal <div class="coincidence">
+  const coincidenceDiv = document.createElement('button');
+  coincidenceDiv.classList.add('coincidence');
+  
+  // Crear el contenedor para el color <div class="coincidence-color">
+  const colorDiv = document.createElement('div');
+  colorDiv.classList.add('coincidence-color');
+  
+  // (Opcional) Aquí puedes añadir un color específico o cualquier estilo
+  // colorDiv.style.backgroundColor = '#FF0000'; // Ejemplo de color
+  
+  // Crear el párrafo con el nombre <p class="coincidence-name">Nombre</p>
+  const nameP = document.createElement('p');
+  nameP.classList.add('coincidence-name');
+  nameP.textContent = data.name; // Asignar el nombre del objeto
+  
+
+  coincidenceDiv.addEventListener("click",()=>{
+    userFound = data;
+    saveScoreInput.value=""
+    console.log(userFound);
+  })
+
+
+  // Agregar el colorDiv y nameP a coincidenceDiv
+  coincidenceDiv.appendChild(colorDiv);
+  coincidenceDiv.appendChild(nameP);
+
+
+
+  
+  // Devolver el componente completo
+  return coincidenceDiv;
+}
+
+
+function clearCoincidence(){
+
+    let coincidences = document.getElementsByClassName("coincidence");
+    userFound = null;
+
+    for(let i=0;i<coincidences.length;i++){
+        coincidences[i].remove();
+    }
+
+}
+
+
+
+
+
+
+
+
+saveScoreButton.addEventListener("click",()=>{
+
+    let userName = saveScoreInput.value.trim().toUpperCase();
+
+    if(userName.length === 0){
         return;
     }
-    
-    alert("Este usuario no existe")
-});
-
-
-signUpButton.addEventListener("click",()=>{
-
-    let userName = signUpInput.value;
 
     if(exist(userName)){
-        alert("this user already exists");
+        alert("Select the existing user and save");
         return
     }
 
     let user = {
         "name":userName,
-        "photo":"https://images.ecestaticos.com/pqIAcGCEagnkjdIBVKVbC9i5FH4=/0x0:1920x1278/1200x900/filters:fill(white):format(jpg)/f.elconfidencial.com%2Foriginal%2Fe8e%2Fe27%2F2bf%2Fe8ee272bfd36f69679936351209d708c.jpg",
+        "color":"blue",
         "europeBest":0,
         "americaBest":0,
-        "asiBest":0,
+        "asiaBest":0,
         "africaBest":0,
         "allBest":0
     }
     allUsers.push(user);
     localStorage.users= JSON.stringify(allUsers);
-    hideElement(signUpContainer)
-    ShowPlayContainer()
-
 })
+
+
+
 
 function exist(userName){
     
@@ -83,33 +158,4 @@ function exist(userName){
         }
     });
     return found;
-}
-
-singInSignUp.addEventListener("click",()=>{
-    hideElement(signInContainer);
-    showElement(signUpContainer);
-})
-
-signUpSignIn.addEventListener("click",()=>{
-    hideElement(signUpContainer);
-    showElement(signInContainer);
-})
-
-
-function hideElement(element){
-    element.classList.remove("d-flex");
-    element.classList.add("d-none");
-}
-
-function showElement(element){
-    element.classList.remove("d-none");
-    element.classList.add("d-flex");
-}
-
-
-function ShowPlayContainer(){
-
-    playContainer.style.display = "relative";
-    playContainer.style.opacity = "1";
-
 }

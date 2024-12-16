@@ -22,6 +22,7 @@ learningMode.addEventListener("click", (e) => {
 
     //Creating a new game
     game = new Game(countriesMode.value);
+    restartTimer();
 
     //Reseting the left selections in the map
     let checked = e.target.checked;
@@ -78,11 +79,11 @@ language.addEventListener("change", (e) => {
 
 countriesMode.addEventListener("change",(e)=>{
     game = new Game(e.target.value);
-    restartTimer()
+    restartTimer();
 })
 
 restart.addEventListener("click",(e)=>{
-    restartTimer()
+    restartTimer();
 })
 
 function restartTimer(){

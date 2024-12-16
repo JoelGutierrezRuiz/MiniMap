@@ -184,6 +184,8 @@ document.addEventListener("DOMContentLoaded", function () {
   displayCoordInfo(initCoord,"ES");
  
 
+ 
+
   // Inicializa el mapa y centra la vista
 
   fetch('https://r2.datahub.io/clvyjaryy0000la0cxieg4o8o/main/raw/data/countries.geojson')
