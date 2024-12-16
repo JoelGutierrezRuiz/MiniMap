@@ -47,6 +47,12 @@ body{
     justify-content: space-evenly;
 }
 
+.countryFlag{
+    display: flex;
+    flex-direction: column;
+}
+
+
 #country_info div{
 
     display: flex;
