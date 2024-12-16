@@ -9,6 +9,12 @@ let currentMarkerCountryCode;
 
 let playingMode = "learning"
 
+var geojson;
+
+
+const lightBulb = document.getElementById("lightBulb");
+
+const countriesMode = document.getElementById("countriesMode");
 
 
 //Learning mode
@@ -33,12 +39,55 @@ let gameOver;
 let lastMarker;
 
 
-class Game{
+let selectedCountries = [];
 
+let game;
+
+
+
+
+
+let hours = "00",minutes = "00", seconds = "00";
+let chronoCall;
+
+let time = document.getElementById("timer");
+
+
+
+function chrono(){
+    seconds++;
+    if(seconds<10) seconds = "0"+seconds;
+    if(seconds>59){
+        seconds = "00";
+        minutes ++;
+        if(minutes<10) minutes = "0"+minutes;
+
+    }
+    if(minutes>59){
+        minutes="00";
+        hours++;
+        if(hours<10) hours = "0"+hours;
+    }
+    time.innerHTML = hours+":"+minutes+":"+seconds;
+}
+
+
+function playTimer(){
+  chronoCall = setInterval(chrono,1000); 
+
+};
+
+
+
+
+
+
+class Game{
 
   #toGuess;
   #countries;
   #countriesAppeared;
+  #started;
 
   constructor(countriesMode){
     switch(countriesMode){
@@ -62,9 +111,13 @@ class Game{
           break;
         }
     }
+    this.#started=false;
+    geojson.resetStyle()
     this.#countriesAppeared = [];
-
+    progressNumber.innerHTML = 0;
     progressRemainingNumber.innerHTML = this.#countries.length
+    this.nextGuess();
+    this.displayGuessing()
   }
 
   nextGuess(){
@@ -98,8 +151,13 @@ class Game{
   }
 
   start(){
-    this.nextGuess();
-    this.displayGuessing()
+    this.#started = true;
+  }
+
+
+
+  isStarted(){
+    return this.#started;
   }
 
   getToGuess(){
@@ -107,11 +165,6 @@ class Game{
   }
 
 }
-
-let game = new Game("europe");
-game.start()
-
-
 // Espera a que la página cargue antes de ejecutar el script
 document.addEventListener("DOMContentLoaded", function () {
   let initCoord = {
@@ -135,109 +188,31 @@ document.addEventListener("DOMContentLoaded", function () {
 
   fetch('https://r2.datahub.io/clvyjaryy0000la0cxieg4o8o/main/raw/data/countries.geojson')
   .then(response => response.json())
-  .then( (data)=> playing(map,data));
+  .then( (data)=>{
+    
+      playing(map,data)  
+      game = new Game(countriesMode.value);
+    });
 
 
 
 
-  const light = document.getElementById("lightBulb");
 
 
-  light.addEventListener("click",()=>{
 
-
-    if(light.innerHTML=="light_off"){
+  lightBulb.addEventListener("click",()=>{
+    if(lightBulb.innerHTML=="light_off"){
       return;
     }
-
-    console.log("aaaaa->>>>>"+game.getToGuess())
-
     let coords = all_countries[game.getToGuess()].coordinates;
-   
+
     map.setView([coords.lat,coords.lng],6);
     createOneMarker(coords,map)
 
   })
 
-
-
-
-
-
-
-
 });
 
-function learning(map,data){
-  let lastCountry;
-    // Mapa base
-    // Capa base de OpenStreetMap
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}.png', {
-      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="https://carto.com/attributions">CartoDB</a>',
-      detectRetina: true
-    }).addTo(map);
-
-    // Función para resaltar el país específico
-    function highlightFeature(e) {
-      if(lastCountry!=e.target){
-        geojson.resetStyle(lastCountry);
-        lastCountry=e.target;
-      }
-      // Cambiar estilo del país resaltado
-      e.target.setStyle({
-        weight: 3,
-        color: 'green',  // Color de la frontera
-        dashArray: '',
-        fillOpacity: 0.3  // Opacidad del relleno
-      });
-    }
-
-
-    function showBorder(e) {
-
-      if(e.target==lastCountry){
-        return;
-      }
-
-      e.target.setStyle({
-        weight: 3,
-        color: 'orange',  // Color de la frontera
-        dashArray: '',
-        fillOpacity: 0.3  // Opacidad del relleno
-      });
-    }
-
-    function noBorder(e){
-      if(e.target==lastCountry){
-        return;
-      }
-      geojson.resetStyle(e.target);
-    }
-
-    // Función para aplicar eventos de interacción (hover, click, etc.)
-    function onEachFeature(feature, layer) {
-      layer.on({
-        "click": highlightFeature,
-        "mouseover":showBorder,
-        "mouseout":noBorder
-      });
-    }
-    // Cargar los países en el mapa
-    var geojson = L.geoJSON(data, {
-      style: function (feature) {
-        return {
-          fillColor:"white",
-          color: 'gray',  // Color de la frontera
-          weight: 1,      // Grosor de la frontera
-          opacity: 0.5    // Opacidad de la frontera
-        };
-      },
-      onEachFeature: onEachFeature
-    }).addTo(map);
-  
-  
-
-}
 
 function playing(map,data){
     // Mapa base
@@ -251,8 +226,14 @@ function playing(map,data){
     function highlightFeature(e) {
 
       console.log("!!!!->",e.target)
-
       let guessed = all_countries[game.getToGuess()].en==e.target.feature.properties.ADMIN;
+
+
+      if(lightBulb.innerHTML=="light_off" && !game.isStarted()){
+        playTimer()
+        game.start()
+      }
+
 
       if(guessed){
         e.target.setStyle({
@@ -321,7 +302,7 @@ function playing(map,data){
       });
     }
     // Cargar los países en el mapa
-    var geojson = L.geoJSON(data, {
+    geojson = L.geoJSON(data, {
       style: function (feature) {
         return {
           fillColor:"white",
@@ -366,11 +347,14 @@ async function displayCoordInfo(coord,countryCode){
 }
 //This function creates a marker and deletes the last marker
 function createOneMarker(coord,map){
+  deletCurrentMarker(map)
+  lastMarker = L.marker([coord.lat, coord.lng]);
+  lastMarker.addTo(map);
+}
+function deletCurrentMarker(map){
   if(lastMarker){
     map.removeLayer(lastMarker)
   }
-  lastMarker = L.marker([coord.lat, coord.lng]);
-  lastMarker.addTo(map);
 }
 //This function calls the the openweatherMap api with one coordinate, returning the country code
 async function openweathermapCountryCode(coord){
@@ -413,5 +397,7 @@ function getRandomElement(arr) {
   const randomIndex = Math.floor(Math.random() * arr.length);
   return arr[randomIndex];
 }
+
+
 
 

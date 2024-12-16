@@ -2,7 +2,7 @@
     margin-top: 10px;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: center ;
 }
 
 select{
@@ -12,29 +12,26 @@ select{
     background-color: transparent;
     
 }
-.timer-buttons{
-    width: 220px;
-    justify-content: space-between;
-    display: flex;
-
+.timer-container *{
+  margin-bottom: 0;
+  width: 220px;
 }
+
+.timer-container span{
+  margin-left: 30px;
+  color: #2196F3;
+  font-size: 30px;
+  font-weight: 300;
+  cursor: pointer;
+}
+
 .timer-number{
     border: 1px solid gray;
     border-radius: 25px;
     background-color: white;
     text-align: center;
 }
-.app-button{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-    width: 100px;
-    background-color:#2e2929;
-    font-size: 20px;
-    color: white;
-    border-radius: 25px;
-    border: none;
-}
+
 
 /* The switch - the box around the slider */
 .switch {

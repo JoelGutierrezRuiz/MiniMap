@@ -1,29 +1,29 @@
 const learningMode = document.getElementById("learningMode");
-const countriesMode = document.getElementById("countriesMode");
 
 
 const timerContainer = document.getElementById("timerContainer");
 const startTimer = document.getElementById("");
 const retryTimer = document.getElementById("");
 const language = document.getElementById("languages");
-const lightBulb = document.getElementById("lightBulb")
 
 const toGuessCountryName = document.getElementById("to-guess-name");
 
 const populationText = document.getElementById("populationText");
 const weatherText = document.getElementById("weatherText");
 
+const restart = document.getElementById("restart");
+
+
+
 learningMode.checked = true;
 
 
 learningMode.addEventListener("click", (e) => {
 
-
+    //Creating a new game
     game = new Game(countriesMode.value);
-    game.start()
 
-
-
+    //Reseting the left selections in the map
     let checked = e.target.checked;
     if (checked) {
         lightBulb.innerHTML = "lightbulb"
@@ -76,12 +76,20 @@ language.addEventListener("change", (e) => {
 
 })
 
-
-
 countriesMode.addEventListener("change",(e)=>{
-
     game = new Game(e.target.value);
-    game.start()
-
-
+    restartTimer()
 })
+
+restart.addEventListener("click",(e)=>{
+    restartTimer()
+})
+
+function restartTimer(){
+    clearInterval(chronoCall);
+    hours="00",minutes="00",seconds="00";
+    time.innerHTML = hours+":"+minutes+":"+seconds;
+    game = new Game(countriesMode.value);
+}
+
+

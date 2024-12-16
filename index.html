@@ -45,8 +45,8 @@
     <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
 
       <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-        <li class="nav-item active">
-          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        <li id="dashboard" class="nav-item active">
+          <a class="nav-link">Access <span class="sr-only">(current)</span></a>
         </li>
 
         <li>
@@ -85,7 +85,7 @@
 
 
 
-  <div class="to-guess-banner">
+  <div id="toGuessBanner" class="to-guess-banner">
 
 
 
@@ -114,51 +114,12 @@
 
 
   <section id="timerContainer" class="d-none timer-container">
-
-    <div>
-
-      <h2 class="timer-number"> 00:00</h2>
-
-      <div class="timer-buttons">
-  
-        <button id="startTimer" class="app-button">
-
-          <span class="material-symbols-outlined">
-            play_arrow
-            </span>
-
-        </button>
-    
-    
-        <button id="retryTimer" class="app-button">
-          
-          <span class="material-symbols-outlined">
-            refresh
-            </span>
-
-        </button>
-  
-  
-      </div>
-  
-
-
-    </div>
-
-
-
-
-
-
-
+      <h2 id="timer" class="timer-number">00:00:00</h2>
+      <span id="restart" class="material-symbols-outlined">
+        refresh
+      </span>
   </section>
 
-
-
-  
-  <div class="alert alert-success" role="alert">
-    NICE!
-  </div>
 
 
 
@@ -289,71 +250,168 @@
 
 
 
-  <table class="d-none">
+  <section class="dashboard-container">
+
+    <h1>Dashboard</h1>
 
 
-    <tr>
-
-      <td colspan="1">
-
-      </td>
-
-      
-      <td>
-        Nombre
-      </td>
-
-      <td>
-        Puntuación
-      </td>
+    <div class="table-container">
+    
 
 
-    </tr>
+      <table class="">
 
 
-    <tr>
-      <td>
-        <img src="https://static.nationalgeographic.es/files/styles/image_3200/public/2773.600x450.jpg?w=400&h=400&q=75">
-      </td>
-      <td>
-        Joelo
-      </td>
-      <td>
-        25
-      </td>
-    </tr>
+        <tr>
+    
+          <td colspan="1">
+    
+          </td>
+    
+          
+          <td>
+            Nombre
+          </td>
+    
+          <td>
+            Puntuación
+          </td>
+    
+    
+        </tr>
+    
+    
+        <tr>
+          <td>
+            <img src="https://static.nationalgeographic.es/files/styles/image_3200/public/2773.600x450.jpg?w=400&h=400&q=75">
+          </td>
+          <td>
+            Joelo
+          </td>
+          <td>
+            25
+          </td>
+        </tr>
+    
+    
+        <tr>
+          <td>
+            <img src="https://static.nationalgeographic.es/files/styles/image_3200/public/2773.600x450.jpg?w=400&h=400&q=75">
+          </td>
+          <td>
+            Joelo
+          </td>
+          <td>
+            25
+          </td>
+        </tr>
+    
+    
+        <tr>
+          <td>
+            <img src="https://static.nationalgeographic.es/files/styles/image_3200/public/2773.600x450.jpg?w=400&h=400&q=75">
+          </td>
+          <td>
+            Joelo
+          </td>
+          <td>
+            25
+          </td>
+        </tr>
+    
+    
+    
+        <tr>
+          <td>
+            <img src="https://static.nationalgeographic.es/files/styles/image_3200/public/2773.600x450.jpg?w=400&h=400&q=75">
+          </td>
+          <td>
+            Joelo
+          </td>
+          <td>
+            25
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <img src="https://static.nationalgeographic.es/files/styles/image_3200/public/2773.600x450.jpg?w=400&h=400&q=75">
+          </td>
+          <td>
+            Joelo
+          </td>
+          <td>
+            25
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <img src="https://static.nationalgeographic.es/files/styles/image_3200/public/2773.600x450.jpg?w=400&h=400&q=75">
+          </td>
+          <td>
+            Joelo
+          </td>
+          <td>
+            25
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <img src="https://static.nationalgeographic.es/files/styles/image_3200/public/2773.600x450.jpg?w=400&h=400&q=75">
+          </td>
+          <td>
+            Joelo
+          </td>
+          <td>
+            25
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <img src="https://static.nationalgeographic.es/files/styles/image_3200/public/2773.600x450.jpg?w=400&h=400&q=75">
+          </td>
+          <td>
+            Joelo
+          </td>
+          <td>
+            25
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <img src="https://static.nationalgeographic.es/files/styles/image_3200/public/2773.600x450.jpg?w=400&h=400&q=75">
+          </td>
+          <td>
+            Joelo
+          </td>
+          <td>
+            25
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <img src="https://static.nationalgeographic.es/files/styles/image_3200/public/2773.600x450.jpg?w=400&h=400&q=75">
+          </td>
+          <td>
+            Joelo
+          </td>
+          <td>
+            25
+          </td>
+        </tr>
+    
+    
+      </table>
 
 
-    <tr>
-      <td>
-        <img src="https://static.nationalgeographic.es/files/styles/image_3200/public/2773.600x450.jpg?w=400&h=400&q=75">
-      </td>
-      <td>
-        Joelo
-      </td>
-      <td>
-        25
-      </td>
-    </tr>
+    </div>
 
 
-    <tr>
-      <td>
-        <img src="https://static.nationalgeographic.es/files/styles/image_3200/public/2773.600x450.jpg?w=400&h=400&q=75">
-      </td>
-      <td>
-        Joelo
-      </td>
-      <td>
-        25
-      </td>
-    </tr>
+  
 
 
+  </section>
 
 
-
-  </table>
 
 
 

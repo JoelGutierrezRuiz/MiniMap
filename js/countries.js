@@ -234,6 +234,7 @@ const all_countries = {
 const all_country_codes = Object.keys(all_countries);
 //EU countries
 const europe_countries = {
+  "BA": { "es": "Bosnia y Herzegovina", "en": "Bosnia and Herzegovina", "coordinates": { "lat": 43.8486, "lng": 18.3564 } },
   "LI": { "es": "Liechtenstein", "en": "Liechtenstein", "coordinates": { "lat": 47.1415, "lng": 9.5215 } },
   "AD": { "es": "Andorra", "en": "Andorra", "coordinates": { "lat": 42.5078, "lng": 1.5211 } },
   "AT": { "es": "Austria", "en": "Austria" },
