@@ -1,12 +1,7 @@
-
-
-
-
 #save-score{
     background-color: rgba(80, 79, 78, 0.822);
-    display: flex;
+    display: none;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     z-index: 400;
     width: 100%;
@@ -17,6 +12,7 @@
 
 
 .save-score-container{
+    margin-top: 150px;
     padding: 50px 100px;
     border-radius: 20px;
     background-color:#F8F9FA;

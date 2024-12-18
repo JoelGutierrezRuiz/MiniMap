@@ -34,7 +34,7 @@ learningMode.addEventListener("click", (e) => {
     else {
         timerContainer.classList.add("d-flex");
         timerContainer.classList.remove("d-none");
-        lightBulb.innerHTML = "light_off";
+       // lightBulb.innerHTML = "light_off";
     }
 })
 

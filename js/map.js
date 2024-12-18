@@ -12,10 +12,13 @@ let playingMode = "learning"
 var geojson;
 
 
+
 const lightBulb = document.getElementById("lightBulb");
 
 const countriesMode = document.getElementById("countriesMode");
 
+
+const alertSave = document.getElementById("alertSave")
 
 //Learning mode
 const countryName = document.getElementById("country_name");
@@ -33,8 +36,8 @@ const progressNumber = document.getElementById("progress");
 const progressRemainingNumber = document.getElementById("progress-remaining")
 
 
-let gameOver;
 
+const alert = document.getElementById("alert")
 
 let lastMarker;
 
@@ -88,6 +91,7 @@ class Game{
   #countries;
   #countriesAppeared;
   #started;
+  #gameOver;
 
   constructor(countriesMode){
     switch(countriesMode){
@@ -122,10 +126,13 @@ class Game{
 
   nextGuess(){
 
-    gameOver = this.#countriesAppeared.length == this.#countries.length;
+    this.#gameOver = this.#countriesAppeared.length == this.#countries.length;
 
-    if(gameOver){
-      alert("All countries guessed")
+    console.log("gameover->",this.#gameOver)
+    if(this.#gameOver){
+      
+      alertSave.style.display="flex";
+      clearInterval(chronoCall)
       return
     }
 
@@ -155,6 +162,9 @@ class Game{
   }
 
 
+  isGameOver(){
+    return this.#gameOver;
+  }
 
   isStarted(){
     return this.#started;
@@ -208,7 +218,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     let coords = all_countries[game.getToGuess()].coordinates;
 
-    map.setView([coords.lat,coords.lng],6);
+    map.setView([coords.lat,coords.lng],4);
     createOneMarker(coords,map)
 
   })
@@ -231,7 +241,7 @@ function playing(map,data){
       let guessed = all_countries[game.getToGuess()].en==e.target.feature.properties.ADMIN;
 
 
-      if(lightBulb.innerHTML=="light_off" && !game.isStarted()){
+      if(!game.isStarted()){
         playTimer()
         game.start()
       }
@@ -246,7 +256,7 @@ function playing(map,data){
           fillOpacity: 0.3  // Opacidad del relleno
         });
 
-        if(!gameOver){
+        if(!game.isGameOver()){
           progressNumber.innerHTML = parseInt(progressNumber.innerHTML)+1;
           game.nextGuess()
         }
@@ -401,5 +411,11 @@ function getRandomElement(arr) {
 }
 
 
+
+// parse 00:00:01 into 1
+
+function parseTimeFormat(data){
+  return parseInt(data.replace(/:/g,""));
+}
 
 
