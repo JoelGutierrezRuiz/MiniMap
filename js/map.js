@@ -121,7 +121,8 @@ class Game{
     progressNumber.innerHTML = 0;
     progressRemainingNumber.innerHTML = this.#countries.length
     this.nextGuess();
-    this.displayGuessing()
+    this.displayGuessing();
+    renderDashboard()
   }
 
   nextGuess(){
@@ -218,7 +219,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     let coords = all_countries[game.getToGuess()].coordinates;
 
-    map.setView([coords.lat,coords.lng],4);
+    map.setView([coords.lat,coords.lng],7);
     createOneMarker(coords,map)
 
   })

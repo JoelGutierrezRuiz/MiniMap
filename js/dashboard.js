@@ -1,10 +1,32 @@
 const dashboard = document.getElementById("dashboard");
+const dashboardTitle=document.getElementById("dashboardTitle");
 
 
-let allUsers =   JSON.parse(localStorage.users);
+function renderDashboard(){
+  allUsers= JSON.parse(localStorage.users);
+  resetDashboard();
+  const withScore = allUsers.filter(obj => obj[countriesMode.value] != null);
+
+  if(withScore.length==0){
+    dashboard.style.display="none"
+    dashboardTitle.innerHTML = "Dashboard <br><br> <h4>Empty<h4>"
+    return
+  }
+  dashboardTitle.innerHTML = "Dashboard"
+
+  dashboard.style.display="block"
 
 
-allUsers.for
+  const ascScores = withScore.sort((a, b) =>  parseTimeFormat(a[countriesMode.value]) - parseTimeFormat(b[countriesMode.value]));
+  console.log(ascScores);
+
+  ascScores.forEach(user => {  
+  dashboard.appendChild(createRow(user));
+
+});
+
+
+}
 
 
 
@@ -12,12 +34,14 @@ allUsers.for
 function createRow(data) {
     // Crear un nuevo elemento <tr>
     let tr = document.createElement('tr');
+    tr.classList.add("score");
   
     // Crear la primera celda con la imagen
-    let tdImage = document.createElement('td');
-    let img = document.createElement('img');
-    img.src = "https://static.nationalgeographic.es/files/styles/image_3200/public/2773.600x450.jpg?w=400&h=400&q=75";  // URL de la imagen
-    tdImage.appendChild(img);
+    let tdColor = document.createElement('td');
+    let color = document.createElement('div');
+    color.classList.add("dashboard-color")
+    color.style.backgroundColor=data.color;
+    tdColor.appendChild(color);
   
     // Crear la segunda celda con el nombre
     let tdName = document.createElement('td');
@@ -30,10 +54,18 @@ function createRow(data) {
     tdTime.textContent = time;
   
     // Añadir las celdas al <tr>
-    tr.appendChild(tdImage);
+    tr.appendChild(tdColor);
     tr.appendChild(tdName);
     tr.appendChild(tdTime);
   
     // Devolver el <tr>
     return tr;
+}
+
+
+function resetDashboard(){
+  let scores =  Array.from(document.getElementsByClassName("score"));
+  for(let i=0; i<scores.length;i++){
+    scores[i].remove();
   }
+}

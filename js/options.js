@@ -36,7 +36,11 @@ learningMode.addEventListener("click", (e) => {
         timerContainer.classList.remove("d-none");
        // lightBulb.innerHTML = "light_off";
     }
+
+
+
 })
+
 
 language.addEventListener("change", (e) => {
 
@@ -80,6 +84,7 @@ language.addEventListener("change", (e) => {
 countriesMode.addEventListener("change",(e)=>{
     game = new Game(e.target.value);
     restartTimer();
+    renderDashboard()
 })
 
 restart.addEventListener("click",(e)=>{

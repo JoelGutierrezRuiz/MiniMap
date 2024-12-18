@@ -51,10 +51,12 @@ alertSaveButon.addEventListener("click",()=>{
 
 saveScoreButton.addEventListener("click",()=>{
 
-
     let userName = saveScoreInput.value.trim().toUpperCase();
 
-
+    if(exist(userName)){
+        console.log("Select the existing user and save");
+        return
+    }
 
     if(userSelected){
         let lastScore = userSelected[countriesMode.value];
@@ -64,44 +66,35 @@ saveScoreButton.addEventListener("click",()=>{
         else{
             userSelected[countriesMode.value] =parseTimeFormat(lastScore)<parseTimeFormat(time.innerHTML)?lastScore:time.innerHTML;
         }
-
         updateUser(userSelected);
         localStorage.users=JSON.stringify(allUsers);
         userSelected=null;
+    }
+    else{
 
-        clearCoincidence()
-        saveScoreContainer.style.display="none"
-        alertSave.style.display="none";
+        if(userName.length === 0){
+            return;
+        }
+        let user = {
+            "name":userName,
+            "color":randomColor(),
+            "europe":null,
+            "america":null,
+            "asia":null,
+            "africa":null,
+            "oceania":null,
+            "all":null
+        }
+        allUsers.push(user);
+        localStorage.users= JSON.stringify(allUsers);
     }
 
-    
-    if(userName.length === 0){
-        return;
-    }
 
-
-
-
-    if(exist(userName)){
-        console.log("Select the existing user and save");
-        return
-    }
-
-
-    let user = {
-        "name":userName,
-        "color":randomColor(),
-        "europe":null,
-        "america":null,
-        "asia":null,
-        "africa":null,
-        "oceania":null,
-        "all":null
-    }
-
+    alertSave.style.display="none";
+    saveScoreContainer.style.display="none"
     user[countriesMode.value]=time.innerHTML
-    allUsers.push(user);
-    localStorage.users= JSON.stringify(allUsers);
+    clearCoincidence()
+    renderDashboard()
 })
 
 
@@ -141,17 +134,14 @@ function createCoincidenceComponent(data) {
   // Devolver el componente completo
   return coincidenceDiv;
 }
-
-
 function clearCoincidence(){
+    saveScoreInput="";
     let coincidences = document.getElementsByClassName("coincidence");
     userFound = null;
     for(let i=0;i<coincidences.length;i++){
         coincidences[i].remove();
     }
 }
-
-
 function updateUser(user){
     for(let i=0 ; i<allUsers.length;i++){
         if(user.name == allUsers[i]){
@@ -159,7 +149,6 @@ function updateUser(user){
         }
     }
 }
-
 function exist(userName){
     if(allUsers.length==0)return;
     let found = false;
