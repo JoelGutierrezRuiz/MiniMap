@@ -2,12 +2,14 @@ const apiKey = "278e107c7b7be0a3e2bb291233e4bcfd";
 const askingFor = getRandomElement(europe_codes);
 const flag = document.getElementById("flag");
 
+let learning = true;
+
 
 let gameLanguage = "es"
 let currentMarkerCountryCode;
 
 
-let playingMode = "learning"
+
 
 var geojson;
 
@@ -20,7 +22,7 @@ const countriesMode = document.getElementById("countriesMode");
 
 const alertSave = document.getElementById("alertSave")
 
-//Learning mode
+//Country info components
 const countryName = document.getElementById("country_name");
 const population = document.getElementById("population");
 const capital = document.getElementById("capital");
@@ -28,10 +30,9 @@ const weatherImg = document.getElementById("weatherImg");
 const degrees= document.getElementById("degrees");
 
 
-//Playing mode
+//Banner guessing components
 const toGuessImg = document.getElementById("to-guess-img");
 const toGuessName = document.getElementById("to-guess-name");
-
 const progressNumber = document.getElementById("progress");
 const progressRemainingNumber = document.getElementById("progress-remaining")
 
@@ -49,14 +50,16 @@ let game;
 
 
 
-
+//Variables
 let hours = "00",minutes = "00", seconds = "00";
+
+//Interval
 let chronoCall;
 
+//Time component
 let time = document.getElementById("timer");
 
-
-
+//Chrono function called each second
 function chrono(){
     seconds++;
     if(seconds<10) seconds = "0"+seconds;
@@ -74,15 +77,11 @@ function chrono(){
     time.innerHTML = hours+":"+minutes+":"+seconds;
 }
 
-
+//Initialize the timer interval
 function playTimer(){
   chronoCall = setInterval(chrono,1000); 
 
 };
-
-
-
-
 
 
 class Game{
@@ -131,8 +130,13 @@ class Game{
 
     console.log("gameover->",this.#gameOver)
     if(this.#gameOver){
-      
-      alertSave.style.display="flex";
+
+      if(!learning){
+        alertSave.style.display="flex";
+      }
+
+      console.log(learning,"queeee")
+
       clearInterval(chronoCall)
       return
     }
@@ -178,10 +182,14 @@ class Game{
 }
 // Espera a que la página cargue antes de ejecutar el script
 document.addEventListener("DOMContentLoaded", function () {
+
+  //Map starting with the coordinates of Spain
   let initCoord = {
     "lat":40.4165,
     "lng":-3.70256
   }
+
+  //Creating the map layer
   const map = L.map('map',
     {
       "maxBounds": [
@@ -190,19 +198,19 @@ document.addEventListener("DOMContentLoaded", function () {
     ],
     "minZoom":1
     }
-  ).setView([initCoord.lat, initCoord.lng],3); 
+  ).setView([initCoord.lat, initCoord.lng],3);  //Setting the view in spain with lowe zoom
 
+  //Displaying the info of spain
   displayCoordInfo(initCoord,"ES");
  
 
  
 
-  // Inicializa el mapa y centra la vista
-
+  //Adding to the mao the GeoJson info of all the countries withs their borders (Api)
   fetch('https://r2.datahub.io/clvyjaryy0000la0cxieg4o8o/main/raw/data/countries.geojson')
   .then(response => response.json())
-  .then( (data)=>{
-    
+  .then( (data)=>{//Once is loaded the game is created, waiting to be started 
+      //Playing has the logic whith the new layer we used to have a specific learning mode
       playing(map,data)  
       game = new Game(countriesMode.value);
     });
@@ -212,11 +220,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-
+  
+    //When the light is clicked the view of the map is setted to the clicked coordinates
   lightBulb.addEventListener("click",()=>{
+
+    //Light off = no clue to show
     if(lightBulb.innerHTML=="light_off"){
       return;
     }
+
+    //Getting the coordinates of the capital city of the country in (countries.js)
     let coords = all_countries[game.getToGuess()].coordinates;
 
     map.setView([coords.lat,coords.lng],7);
@@ -228,14 +241,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 function playing(map,data){
-    // Mapa base
-    // Capa base de OpenStreetMap
+
+    // Inserting a new layer from OpenStreetMap, this layer has no name of any cities or countries
     L.tileLayer('https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}.png', {
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, &copy; <a href="https://carto.com/attributions">CartoDB</a>',
       detectRetina: true
     }).addTo(map);
 
-    // Función para resaltar el país específico
+    //
     function highlightFeature(e) {
 
       console.log("!!!!->",e.target)
@@ -364,11 +377,14 @@ function createOneMarker(coord,map){
   lastMarker = L.marker([coord.lat, coord.lng]);
   lastMarker.addTo(map);
 }
+
+//Deletes the last marker in the map
 function deletCurrentMarker(map){
   if(lastMarker){
     map.removeLayer(lastMarker)
   }
 }
+
 //This function calls the the openweatherMap api with one coordinate, returning the country code
 async function openweathermapCountryCode(coord){
   let link = "http://api.openweathermap.org/geo/1.0/reverse?lat=" + coord.lat + "&lon=" + coord.lng + "&appid=" + apiKey;
@@ -379,6 +395,7 @@ async function openweathermapCountryCode(coord){
 
   return city[0].country;
 }
+
 //This function calls restCountries API with a country code returning more info about the country like its flag
 async function restcountriesInfo(countryCode){
   let link = "https://restcountries.com/v3.1/alpha/"+countryCode;
@@ -386,35 +403,31 @@ async function restcountriesInfo(countryCode){
   let country = await countryInfo.json();
   return country;
 }
+
 //Kelvin to Celcius
 function kelvinToCelcius(kelvin){
   let celsius = kelvin - 273.15
   return Math.round(celsius);
 }
+
 //This function calls openweather returning the current weather
 async function openWeatherCurrentWeather(coord){
 
   let link = "https://api.openweathermap.org/data/2.5/weather?lat="+coord.lat+"&lon="+coord.lng+"&appid="+apiKey;
-
   let result =  await fetch(link);
-
   let currentWeather = await result.json();
   
-  console.log("Current weather call result: ",currentWeather);
-
   return currentWeather;
 
 }
-//
+
+// Returns a random element from an array in this a countryCode array in countries.js
 function getRandomElement(arr) {
   const randomIndex = Math.floor(Math.random() * arr.length);
   return arr[randomIndex];
 }
 
-
-
 // parse 00:00:01 into 1
-
 function parseTimeFormat(data){
   return parseInt(data.replace(/:/g,""));
 }

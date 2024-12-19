@@ -17,6 +17,10 @@
 
 }
 
+#dashboardEmpty{
+    display: none;
+}
+
 .dashboard-menu{
     background-color: aliceblue;
     display: flex;

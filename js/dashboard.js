@@ -1,5 +1,5 @@
 const dashboard = document.getElementById("dashboard");
-const dashboardTitle=document.getElementById("dashboardTitle");
+
 
 
 function renderDashboard(){
@@ -9,10 +9,10 @@ function renderDashboard(){
 
   if(withScore.length==0){
     dashboard.style.display="none"
-    dashboardTitle.innerHTML = "Dashboard <br><br> <h4>Empty<h4>"
+    dashboardEmpty.style.display= "block"
     return
   }
-  dashboardTitle.innerHTML = "Dashboard"
+  dashboardEmpty.style.display = "none"
 
   dashboard.style.display="block"
 

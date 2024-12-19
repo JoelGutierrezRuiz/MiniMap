@@ -225,13 +225,9 @@ const all_countries = {
   "ZM": { "es": "Zambia", "en": "Zambia", "coordinates": { "lat": -15.3875, "lng": 28.3221 } },
   "ZW": { "es": "Zimbabue", "en": "Zimbabwe", "coordinates": { "lat": -17.8292, "lng": 31.0522 } }
 }
-
-
-
-
-
 //All country codes
 const all_country_codes = Object.keys(all_countries);
+
 //EU countries
 const europe_countries = {
   "BA": { "es": "Bosnia y Herzegovina", "en": "Bosnia and Herzegovina", "coordinates": { "lat": 43.8486, "lng": 18.3564 } },
@@ -280,7 +276,6 @@ const europe_countries = {
   "NO": { "es": "Noruega", "en": "Norway" },
   "CH": { "es": "Suiza", "en": "Switzerland" }
 };
-
 //
 const europe_codes = Object.keys(europe_countries);
 
@@ -338,7 +333,6 @@ const america_countries = {
 };
 //
 const america_codes = Object.keys(america_countries);
-
 
 //Africa countries
 const africa_countries = {
@@ -398,11 +392,8 @@ const africa_countries = {
   "ZM": { "es": "Zambia", "en": "Zambia" },
   "ZW": { "es": "Zimbabue", "en": "Zimbabwe" }
 };
-
 //
 const africa_codes = Object.keys(africa_countries);
-
-
 
 //Asia countries 
 const asia_countries = {
@@ -457,10 +448,8 @@ const asia_countries = {
   "VN": { "es": "Vietnam", "en": "Vietnam" },
   "YE": { "es": "Yemen", "en": "Yemen" }
 };
-
 //
 const asia_codes = Object.keys(asia_countries);
-
 
 //Oceania countries 
 const oceania_countries = {
@@ -481,7 +470,5 @@ const oceania_countries = {
   "TV": { "es": "Tuvalu", "en": "Tuvalu", "coordinates": { "lat": -7.1095, "lng": 177.6493 } },
   "VU": { "es": "Vanuatu", "en": "Vanuatu", "coordinates": { "lat": -15.3767, "lng": 166.9592 } }
 };
-
 //
-
 const oceania_codes = Object.keys(oceania_countries);
